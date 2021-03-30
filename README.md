@@ -13,7 +13,8 @@
 # How to use
 
 1. Change the webhook to yours
-2. Run the batch file
+2. Remove fail-safes
+3. Run the batch file
 
 # Steals
 
