@@ -48,7 +48,7 @@
 # Screenshots
 
 <p align="center">
-<img src="https://i.imgur.com/LIZ7aFC.png">
+<img src="https://i.imgur.com/JSrmSzW.png">
 </p>
 
 # Legal
