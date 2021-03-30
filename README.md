@@ -4,6 +4,11 @@ A batch script for taking files and sending them trough a webhook
 * Made for educational and practice purposes. Not to be abused or used wrongly to harm others. 
     * Seriously, it's scummy to steal other's info and is illegal. 
 
+# How to use
+
+1. Change the webhook to yours
+2. Run the batch file
+
 # Future 
 
 * More features might come when I am bored.
