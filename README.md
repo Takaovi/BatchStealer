@@ -4,7 +4,7 @@
 A batch script for taking files and sending them trough a webhook
 
 * Made for educational and practice purposes. Not to be abused or used wrongly to harm others. 
-    * Seriously, it's scummy to steal other's info and is illegal. 
+    * Seriously, it's scummy to steal other's info and it's illegal. 
 
 # How to use
 
