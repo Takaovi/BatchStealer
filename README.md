@@ -1,10 +1,10 @@
 <p align="center">
 <img src="https://i.imgur.com/ubHHTuu.png">
 </p>
-A batch script for taking files and sending them trough a webhook
 
-* Made for educational and practice purposes. Not to be abused or used wrongly to harm others. 
-    * Seriously, it's scummy to steal other's info and it's illegal. 
+# BatchStealer
+
+A batch script for taking files or text and sending them to a webhook
 
 # How to use
 
