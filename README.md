@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://i.imgur.com/pfEKLbS.png">
+<img src="https://i.imgur.com/VfY6x3Y.png">
 </p>
 
 # BatchStealer
