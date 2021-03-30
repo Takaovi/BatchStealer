@@ -13,7 +13,7 @@ A batch script for taking files and sending them trough a webhook
 
 # Future 
 
-* More features might come when I am bored.
+* More features might come if I am bored.
 * Pull requests are welcome!
 
 # Legal
