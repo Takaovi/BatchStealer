@@ -3,6 +3,10 @@ A batch script for taking files and sending them trough a webhook
 
 * Made for educational and practice purposes. Not to be abused or used wrongly to harm others. 
 
+# Future 
+
+* More features might be coming, but seriously use this for educational purposes. It's scummy to steal other's info and is illegal.
+
 # Legal
 
 None of the authors, contributors, or anyone else connected with this open source project, in any way whatsoever, can be responsible for your use of the information or the application contained in or linked from this repository.
