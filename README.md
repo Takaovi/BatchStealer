@@ -6,6 +6,8 @@
 
 ### A batch script for taking files or text and sending them to a webhook
 
+30.3.2021 < Undetectable
+
 # Important
 
 ⚠️ It is forbidden to use this batch file for non-educational purposes. Use only with permission on your own computers.
