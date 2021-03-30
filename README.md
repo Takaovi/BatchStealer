@@ -1,3 +1,7 @@
+<p align="center">
+<img src="https://i.imgur.com/pfEKLbS.png">
+</p>
+
 # BatchStealer
 A batch script for taking files and sending them trough a webhook
 
