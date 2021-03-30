@@ -6,7 +6,9 @@
 
 ### A batch script for taking files or text and sending them to a webhook
 
-It is forbidden to use this batch file for non-educational purposes. Use only with permission on your own computers.
+# Important
+
+⚠️ It is forbidden to use this batch file for non-educational purposes. Use only with permission on your own computers.
 
 # How to use
 
