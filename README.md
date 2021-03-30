@@ -2,10 +2,12 @@
 A batch script for taking files and sending them trough a webhook
 
 * Made for educational and practice purposes. Not to be abused or used wrongly to harm others. 
+    * Seriously, it's scummy to steal other's info and is illegal. 
 
 # Future 
 
-* More features might be coming, but seriously use this for educational purposes. It's scummy to steal other's info and is illegal.
+* More features might come when I am bored.
+* Pull requests are welcome!
 
 # Legal
 
