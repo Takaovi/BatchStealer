@@ -51,6 +51,9 @@
 <img src="https://i.imgur.com/JSrmSzW.png">
 </p>
 
+# Obfuscation
+* You can try [this](https://github.com/SkyEmie/batch-obfuscator)
+
 # Legal
 
 None of the authors, contributors, or anyone else connected with this open source project, in any way whatsoever, can be responsible for your use of the information or the application contained in or linked from this repository.
