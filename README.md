@@ -20,6 +20,10 @@
 2. Remove fail-safes
 3. Run the batch file
 
+### Use cases
+* Obfuscate(or not, FUD anyways) and add to a winforms resource, fully FUD and hidden. (Bat visible in appdata folder, if user doesn't expect it they won't check there though)
+* Obfuscate(or not, FUD anyways) and put inside another batch file.
+
 # Features
 
 #### Steals
