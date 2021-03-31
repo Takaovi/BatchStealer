@@ -8,7 +8,7 @@
 
 * Works on Windows 10 (Requires *cURL* which is on latest Windows 10 devices)
 
-30.3.2021 < FUD [(Virustotal)](https://www.virustotal.com/gui/file/d1264cf7b1afdaa73647953a85791ce69415c23ddeee063045a630c008d807e4/detection)
+31.3.2021 < FUD [(Virustotal)](https://www.virustotal.com/gui/file/3aaea776054652cb1f9a9e2840a61dd78bc8148db3a258380d3e14a297e48854/detection)
 
 # Important
 
