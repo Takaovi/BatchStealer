@@ -4,7 +4,7 @@
 
 # BatchStealer
 
-### A batch script for taking files or text and sending them to a webhook
+### A batch script for taking files or info and sending them to a webhook
 
 * Works on Windows 10 (Requires *cURL* which is on latest Windows 10 devices)
 
