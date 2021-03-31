@@ -6,7 +6,7 @@
 
 ### A batch script for taking files or info and sending them to a webhook
 
-* Works on Windows 10 (Requires *cURL* which is on the latest Windows 10)
+* Windows 10 build 17063, or later (*cURL* is included)
 
 31.3.2021 < FUD [(Virustotal)](https://www.virustotal.com/gui/file/3aaea776054652cb1f9a9e2840a61dd78bc8148db3a258380d3e14a297e48854/detection)
 
