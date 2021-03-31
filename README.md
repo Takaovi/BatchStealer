@@ -25,7 +25,7 @@
 
 # Features
 
-#### Steals (Almost everything is encrypted, I haven't had the patience to do that on a fucking batch file.)
+#### Steals (Almost everything is encrypted, I haven't had the patience to do that on a fucking batch file while staying FUD)
 * Full system information (systeminfo)
   * OS Name & Version
   * Product ID
