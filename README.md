@@ -17,7 +17,7 @@
 # How to use
 
 1. Change the webhook to yours
-2. Remove fail-safes (goto xxx)
+2. Remove fail-safes ("goto xxx")
 3. Run the batch file
 
 ### Use cases
