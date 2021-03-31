@@ -86,8 +86,8 @@ goto skiprecurring
 :: SELF DELETE AFTER EXECUTION - REMOVE GOTO IF YOU WANT IT
 goto skipselfdelete
 2>NUL if not "%cd%"=="%appdata%\Microsoft\Windows" (
-2>NUL call :deleteSelf&exit /b
-:deleteSelf
+2>NUL call :d & exit /b
+:d
 2>NUL start /b "" cmd /c del "%~f0"&exit /b
 )
 :skipselfdelete
