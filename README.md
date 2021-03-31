@@ -30,29 +30,53 @@
 
 # Features
 
-#### Steals
+#### Steals (Almost everything is encrypted, I haven't had the patience to do that on a fucking batch file.)
+* Full system information (systeminfo)
+  * OS Name & Version
+  * Product ID
+  * System Manufacturer
+  * Processor(s)
+  * BIOS Version
+  * Time Zone:
+  * Total Physical Memory
+  * Network Card(s)
+  * And more...
 * Growtopia
   * Save.dat
 * Chrome
+  * Cookies
   * History
   * Shortcuts
   * Bookmarks
-  * Login Data (encrypted)
+  * Login Data
+* Opera
+  * Cookies
+  * History
+  * Shortcuts
+  * Bookmarks
+  * Login Data
+* Vivaldi
+  * Cookies
+  * History
+  * Shortcuts
+  * Bookmarks
+  * Login Data
+* Firefox
+  * Logins
+  * key3
+  * key4
+* osu!
+  * osu!.cfg
 * Discord
   * File containing Token
 * Steam
   * Logged in users (Username, email)
 * Minecraft
-  * Launcher profiles and accounts (no password)
+  * Launcher profiles and accounts
 
-#### Other
-* Take full system info
+#### Other features
 * Delete itself
 * Add itself to task scheduler
-
-# Future 
-
-* More features come if and when I am bored.
 
 # Support
 
