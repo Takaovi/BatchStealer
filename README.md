@@ -20,8 +20,9 @@
 2. Remove fail-safes
 3. Run the batch file
 
-# Steals
+# Features
 
+#### Steals
 * Growtopia
   * Save.dat
 * Chrome
@@ -35,6 +36,11 @@
   * Logged in users (Username, email)
 * Minecraft
   * Launcher profiles and accounts (no password)
+
+#### Other
+* Take full system info
+* Delete itself
+* Add itself to task scheduler
 
 # Future 
 
