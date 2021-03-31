@@ -36,8 +36,6 @@
   * Total Physical Memory
   * Network Card(s)
   * And more...
-* Growtopia
-  * Save.dat
 * Chrome
   * Cookies
   * History
@@ -69,10 +67,12 @@
   * Logged in users (Username, email)
 * Minecraft
   * Launcher profiles and accounts
+* Growtopia
+  * Save.dat
 
 #### Other features
-* Delete itself
-* Add itself to task scheduler
+* Delete itself after execution
+* Add itself to task scheduler (CMD window will be visible when executed by task scheduler)
 
 # Support
 
