@@ -12,7 +12,7 @@
 
 # Important
 
-⚠️ It is forbidden to use this batch file for non-educational purposes. Use only with permission on your own computers.
+⚠️ It is forbidden to use this batch file for non-educational purposes. Use only with permission on your own computers. While the batch file is not itself illegal, running it on other PCs you don't have the access and permission is.
 
 # How to use
 
