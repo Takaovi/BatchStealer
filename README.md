@@ -63,7 +63,8 @@
 * osu!
   * osu!.cfg
 * Discord
-  * File containing Token
+  * File containing a Token
+  * Other various files
 * Steam
   * Logged in users (Username, email)
 * Minecraft
