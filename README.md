@@ -8,7 +8,7 @@
 
 * Windows 10 build 17063, or later (*cURL* is included)
 
-31.3.2021 < FUD [(Virustotal)](https://www.virustotal.com/gui/file/3aaea776054652cb1f9a9e2840a61dd78bc8148db3a258380d3e14a297e48854/detection)
+1.4.2021 < FUD [(Virustotal)](https://www.virustotal.com/gui/file/06f332bd1ec324d42298b59d765150560ada1ca1b780439d6b6e76674c2f4388/detection)
 
 # Important
 
