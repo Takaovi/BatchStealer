@@ -2,7 +2,7 @@
 <img src="https://i.imgur.com/ubHHTuu.png">
 </p>
 
-# BatchStealer
+# BatchStealer | [BatchStealer Example](https://github.com/Takaovi/BatchStealer-Example)
 
 ### A batch script for taking files or info and sending them to a webhook
 
