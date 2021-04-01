@@ -72,7 +72,9 @@
 
 #### Other features
 * Delete itself after execution
-* Add itself to task scheduler (CMD window will be visible when executed by task scheduler)
+* Add itself to task scheduler (CMD window will be invisible when executed)
+* Push updates to infected machines by adding an "update url". (A raw link containing the batch code you want to change on the infected machine)
+  * Beta, expect bugs and crashes.
 
 # Support
 
