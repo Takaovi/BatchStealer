@@ -58,6 +58,7 @@
   * Logins
   * key3
   * key4
+  * Cookies (Plain text!)
 * osu!
   * osu!.cfg
 * Discord
