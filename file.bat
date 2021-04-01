@@ -225,6 +225,13 @@ if "%updateurl%"=="" (
 )
 :skipupdateconfig
 
+:: If using onlogin use this - Might give away your file though
+goto skipadministrator
+if not "%cd%"=="%vpath%" (
+	if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
+)
+:skipadministrator
+
 :: Make a scheduled task so the VBS -> Batch be ran every X 
 SchTasks /create /f /sc %when% /tn "%ScheduleName%" /tr "%vpath%\%vname%"
 IF NOT ERRORLEVEL 1 (
