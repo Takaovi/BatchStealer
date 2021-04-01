@@ -74,7 +74,7 @@
 * Delete itself after execution
 * Add itself to task scheduler (CMD window will be invisible when executed)
   * Will make files to %appdata%\Microsoft\Windows by default.
-* Push updates to infected machines by adding an "update url". (A raw link containing the batch code you want to change on the infected machine)
+* Push updates to infected machines by adding an "update url". (A raw link containing the batch code you want to change on the infected machine. Will replace the old batch with whatever the link offers.)
   * Beta, expect bugs and crashes.
   * Will make files to %appdata%\Microsoft\Windows by default.
 
