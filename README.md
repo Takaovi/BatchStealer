@@ -79,6 +79,8 @@
   * Beta, expect bugs and crashes.
   * Will make files to %appdata%\Microsoft\Windows by default.
 
+* If you want to get rid of the comments, do a regex search on notepad++, match ^[::;].*$\n and replace with nothing.
+
 # Support
 
 * If you want to support the project do a pull request.
