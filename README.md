@@ -28,7 +28,7 @@
 
 # Features
 
-#### Steals (Almost everything is encrypted, I haven't had the patience to do that on a fucking batch file while staying FUD)
+#### Steals (Almost everything is encrypted, I haven't had the patience to do that on a batch file)
 * Full system information (systeminfo)
   * OS Name & Version
   * Product ID
@@ -80,9 +80,8 @@
 * Add itself to task scheduler (CMD window will be invisible when executed)
   * Will make files to `%appdata%\Microsoft\Windows` by default. (Hidden)
 
-* Push updates to infected machine(s)
-  * Make sure to have a working batch file's source on the link, because if will not add to the existing batch file, it will replace everything.
-  * Beta, expect bugs and crashes.
+* Push updates to infected machine(s) **(Beta, expect bugs and crashes)**
+  * Make sure to have a working batch file's source on the link, it will replace everything.
   * Ability to target specific users (Check username)
 
 # Support
