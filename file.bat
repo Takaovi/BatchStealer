@@ -162,7 +162,7 @@ set "uname=1.bat"
 set "vname=0.vbs"
 
 :: Task Scheduler runs a downloader, it will download the text from your URL and replace it with the current batch file. Needs to be raw link. Leave blank to skip.
-set "updateurl=www.google.com"
+set "updateurl="
 	:: Target computer's username (Case sensitive) | Leave blank to skip.
 	set "targetusername="
 	
