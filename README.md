@@ -89,12 +89,6 @@
 * If you want to support the project do a pull request.
   * The pull request could be a new steal etc.
 
-# Screenshots
-
-<p align="center">
-<img src="https://i.imgur.com/JSrmSzW.png">
-</p>
-
 # Obfuscation
 * You can try [this](https://github.com/SkyEmie/batch-obfuscator)
   * Clean the file before obfuscating it, remove all the comments and the features you don't use. Make the file as small as possible.
