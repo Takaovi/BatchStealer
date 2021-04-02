@@ -72,6 +72,7 @@
   * Other various files
 * Steam
   * Logged in users (Username, email)
+  * Hidden ssfn files
 * Minecraft
   * Launcher profiles and accounts
 * Growtopia
