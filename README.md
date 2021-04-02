@@ -20,7 +20,7 @@
 2. Remove fail-safes ("goto xxx")
 3. Run the batch file
 
-#### If you want to get rid of the comments, do a regex search on notepad++, match `^[::;].*$\n` and replace with nothing.
+#### If you want to get rid of the comments, do a regex search on notepad++, match `^::.*\n` and replace with nothing.
 ### Avoid
 * Just changing the webhook and doing nothing else. If the batch file does nothing the user will open it to see what's wrong.
 
