@@ -24,7 +24,6 @@ for /f "delims=[] tokens=2" %%a in ('ping -4 -n 1 %ComputerName% ^| findstr [') 
 for /f "tokens=1-4 delims=/:." %%a in ("%TIME%") do (
 	set HH24=%%a
 	set MI=%%b
-	set SS=%%c
 )
 
 :: SEND FIRST REPORT MESSAGE WITH SOME INFO
