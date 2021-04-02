@@ -38,7 +38,7 @@
   * System Manufacturer
   * Processor(s)
   * BIOS Version
-  * Time Zone:
+  * Time Zone
   * Total Physical Memory
   * Network Card(s)
   * And more...
