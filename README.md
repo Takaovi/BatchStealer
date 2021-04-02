@@ -26,7 +26,8 @@
 * Do a regex search on notepad++, match `^::.*\n` and replace with nothing.
 
 ### Avoid
-* Just changing the webhook and doing nothing else. If the batch file does nothing the user will open it to see what's wrong.
+* Just changing the webhook and doing nothing else. 
+  * If the batch file does nothing the user will open it to see what's wrong.
 
 # Features
 
