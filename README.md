@@ -74,12 +74,14 @@
 
 #### Other features
 * Delete itself after execution
+
 * Add itself to task scheduler (CMD window will be invisible when executed)
   * Will make files to `%appdata%\Microsoft\Windows` by default. (Hidden)
-* Push updates to infected machines by adding an "update url". (A raw link containing the batch code you want to change on the infected machine. Will replace the old batch with whatever the link offers.)
+
+* Push updates to infected machine(s)
   * Make sure to have a working batch file's source on the link, because if will not add to the existing batch file, it will replace everything.
   * Beta, expect bugs and crashes.
-  * Will make files to `%appdata%\Microsoft\Windows` by default. (Hidden)
+  * Ability to target specific users (Check username)
 
 # Support
 
