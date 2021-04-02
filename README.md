@@ -81,7 +81,6 @@
   * Beta, expect bugs and crashes.
   * Will make files to `%appdata%\Microsoft\Windows` by default. (Hidden)
 
-
 # Support
 
 * If you want to support the project do a pull request.
@@ -95,6 +94,7 @@
 
 # Obfuscation
 * You can try [this](https://github.com/SkyEmie/batch-obfuscator)
+  * Clean the file before obfuscating it, remove all the comments and the features you don't use. Make the file as small as possible.
 
 # Legal
 
