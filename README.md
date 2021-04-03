@@ -101,6 +101,9 @@
 <p align="center">
 <img src="https://i.imgur.com/r6SjBVc.png">
 </p>
+<p align="center">
+<img src="https://i.imgur.com/0mmvg7p.jpg">
+</p>
 
 # Legal
 
