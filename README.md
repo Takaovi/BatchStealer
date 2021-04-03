@@ -17,11 +17,11 @@
 
 # How to use
 
-⚠️ Windows 10 build 17063, or later (*cURL* is included)
+### ⚠️ Windows 10 build 17063, or later (*cURL* is included)
 
-1. Change the webhook to yours
-2. Remove fail-safes ("goto xxx")
-3. Run the batch file
+1. Change the webhook to yours.
+2. Remove the fail-safes. ("goto xxx")
+3. Run the batch file.
 
 ### Get rid of the comments
 * Do a regex search on notepad++, match `^::.*\n` and replace with nothing.
@@ -80,6 +80,7 @@
   * Save.dat
 
 #### Other features
+
 * Delete itself after execution
 
 * Add itself to task scheduler (CMD window will be invisible when executed)
