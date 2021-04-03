@@ -130,7 +130,7 @@
     * Ability to target specific users (Check username)
 </details>
 
-# 💡 Support
+## 💡 Support
 
 * If you want to support the project do a pull request.
   * The pull request could be a new steal etc.
