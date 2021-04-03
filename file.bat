@@ -9,7 +9,7 @@ set "vpath=C:\ProgramData"
 
 cd %vpath%
 
-:: If using onlogin on task scheduler use this - Might give away your file though - You don't need administrator for anything else currently.
+:: If using onlogin on Task Scheduler use this - Might give away your file though - You don't need administrator for anything else currently.
 goto skipadministrator
 if not "%~dp0"=="%vpath%\" (
 	if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
