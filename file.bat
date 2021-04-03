@@ -213,7 +213,7 @@ goto skiprecurring
 >NUL attrib -h "%vpath%\%bname%"
 >NUL attrib -h "%vpath%\%vname%"
 
-:: MINUTE (1 - 1439 minutes), HOURLY (1 - 23 hours), DAILY (1 - 365 days), WEEKLY (1 - 52 weeks), MONTHLY (1 - 12 months/ lastday), ONCE, ONSTART (DOESN'T REALLY WORK), ONLOGON (REQUIRE ADMINISTRATOR
+:: MINUTE (1 - 1439 minutes), HOURLY (1 - 23 hours), DAILY (1 - 365 days), WEEKLY (1 - 52 weeks), MONTHLY (1 - 12 months/ lastday), ONCE, ONSTART (DOESN'T REALLY WORK), ONLOGON (REQUIRE ADMINISTRATOR)
 set "when=Daily"
 :: Name that will show up on Task Scheduler. Default = WindowsUpdate
 set "ScheduleName=WindowsUpdate"
