@@ -79,7 +79,7 @@
 
 * Delete itself after execution
 
-* Add itself to task scheduler (CMD window will be invisible when executed)
+* Add itself to Task Scheduler (CMD window will be invisible when executed)
   * Will make files to `C:\ProgramData` by default. (Hidden)
 
 * Push updates to infected machine(s) **(Beta, expect bugs and crashes)**
