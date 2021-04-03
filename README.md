@@ -35,7 +35,9 @@
 
 # Features
 
-#### Steals
+### Steals
+
+*Almost everything is encrypted, I haven't had the patience to do that on a batch file*
 
  <details>
   <summary>Full system information</summary>
@@ -113,9 +115,7 @@
   * Save.dat
 </details>
 
-*Almost everything is encrypted, I haven't had the patience to do that on a batch file*
-
-#### Other features
+### Other features
 
 <details>
   <summary>Other</summary>
