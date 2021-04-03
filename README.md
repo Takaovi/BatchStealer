@@ -30,63 +30,103 @@
 
 # Features
 
-#### Steals (Almost everything is encrypted, I haven't had the patience to do that on a batch file)
-* Full system information (systeminfo)
-  * OS Name & Version
-  * Product ID
-  * System Manufacturer
-  * Processor(s)
-  * BIOS Version
-  * Time Zone
-  * Total Physical Memory
-  * Network Card(s)
-  * And more...
-* Chrome
+#### Steals
+
+ <details>
+  <summary>Full system information</summary>
+ 
+   * OS Name & Version
+   * Product ID
+   * System Manufacturer
+   * Processor(s)
+   * BIOS Version
+   * Time Zone
+   * Total Physical Memory
+   * Network Card(s)
+   * And more...
+</details>
+<details>
+  <summary>Chrome</summary>
+ 
   * Cookies
   * History
   * Shortcuts
   * Bookmarks
   * Login Data
-* Opera
+</details>
+<details>
+  <summary>Opera</summary>
+ 
   * Cookies
   * History
   * Shortcuts
   * Bookmarks
   * Login Data
-* Vivaldi
+</details>
+<details>
+  <summary>Vivaldi</summary>
+ 
   * Cookies
   * History
   * Shortcuts
   * Bookmarks
   * Login Data
-* Firefox
+</details>
+<details>
+  <summary>Firefox</summary>
+ 
   * Logins
   * key3
   * key4
   * Cookies (Plain text!)
-* osu!
-  * osu!.cfg
-* Discord
+</details>
+<details>
+  <summary>osu!</summary>
+ 
+ * osu!.cfg
+</details>
+<details>
+  <summary>Discord</summary>
+ 
   * File containing a Token
   * Other various files
-* Steam
+</details>
+<details>
+  <summary>Steam</summary>
+ 
   * Logged in users (Username, email)
   * Hidden ssfn files
-* Minecraft
-  * Launcher profiles and accounts
-* Growtopia
+</details>
+<details>
+  <summary>Minecraft</summary>
+ 
+* Launcher profiles and accounts
+</details>
+<details>
+  <summary>Growtopia</summary>
+ 
   * Save.dat
+</details>
+
+*Almost everything is encrypted, I haven't had the patience to do that on a batch file*
 
 #### Other features
 
-* Delete itself after execution
+<details>
+  <summary>Other</summary>
+ 
+  * Delete itself after execution
 
-* Add itself to Task Scheduler (CMD window will be invisible when executed)
-  * Will make files to `C:\ProgramData` by default. (Hidden)
+  * Add itself to Task Scheduler (CMD window will be invisible when executed)
+     * Will make files to `C:\ProgramData` by default. (Hidden)
 
-* Push updates to infected machine(s) **(Beta, expect bugs and crashes)**
-  * Make sure to have a working batch file's source on the link, it will replace everything.
-  * Ability to target specific users (Check username)
+  * Push updates to infected machine(s) **(Beta, expect bugs and crashes)**
+    * Make sure to have a working batch file's source on the link, it will replace everything.
+    * Ability to target specific users (Check username)
+</details>
+
+
+
 
 # Support
 
