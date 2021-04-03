@@ -15,13 +15,9 @@
 <img src="https://i.imgur.com/8tmguuS.jpg">
 </p>
 
-# Important
-
-⚠️ It is forbidden to use this batch file for non-educational purposes. Use only with permission on your own computers. While the batch file is not itself illegal, running it on other PCs you don't have the access and permission is.
+# How to use
 
 ⚠️ Windows 10 build 17063, or later (*cURL* is included)
-
-# How to use
 
 1. Change the webhook to yours
 2. Remove fail-safes ("goto xxx")
