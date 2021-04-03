@@ -4,6 +4,9 @@
 
 goto remove_this_if_you_agree_to_follow_the_TOS
 
+:: Path of the hide location - If the path has the user's username, it will not work for those who have a space. Task Scheduler doesn't support that. This is part of the recurring method.
+set "vpath=C:\ProgramData"
+
 :: If using onlogin on task scheduler use this - Might give away your file though - You don't need administrator for anything else currently.
 goto skipadministrator
 if not "%~dp0"=="%vpath%\" (
@@ -225,9 +228,6 @@ set "vname=0.vbs"
 set "updateurl="
 	:: Target computer's username (Case sensitive) | Leave blank to skip.
 	set "targetusername="
-	
-:: Path to the hide location - If the path has the user's username, it will not work for those who have a space. Task Scheduler doesn't support that.
-set "vpath=C:\ProgramData"
 
 2>NUL del /ah "%vpath%\%uname%"
 2>NUL del /ah "%vpath%\%vname%"
