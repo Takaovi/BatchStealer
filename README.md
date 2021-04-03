@@ -9,7 +9,7 @@
 # Screenshots
 
  <details>
-  <summary>Discord capture</summary>
+  <summary>Discord Capture Example</summary>
  
   <p align="center">
   <img src="https://i.imgur.com/8tmguuS.jpg">
