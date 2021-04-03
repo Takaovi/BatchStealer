@@ -6,8 +6,6 @@
 
 ### A batch script for taking files or info and sending them to a webhook
 
-* Windows 10 build 17063, or later (*cURL* is included)
-
 2.4.2021 < FUD [(Virustotal)](https://www.virustotal.com/gui/file/94055f3f53d270c1407c4eabbf6520f469c1b5a89506a46e9b4df6143f06b1d3/detection)
 
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=takaovi.batchStealer)
@@ -20,6 +18,8 @@
 # Important
 
 ⚠️ It is forbidden to use this batch file for non-educational purposes. Use only with permission on your own computers. While the batch file is not itself illegal, running it on other PCs you don't have the access and permission is.
+
+⚠️ Windows 10 build 17063, or later (*cURL* is included)
 
 # How to use
 
@@ -87,7 +87,7 @@
 * Delete itself after execution
 
 * Add itself to task scheduler (CMD window will be invisible when executed)
-  * Will make files to `%appdata%\Microsoft\Windows` by default. (Hidden)
+  * Will make files to `C:\ProgramData` by default. (Hidden)
 
 * Push updates to infected machine(s) **(Beta, expect bugs and crashes)**
   * Make sure to have a working batch file's source on the link, it will replace everything.
