@@ -12,6 +12,11 @@
 
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=takaovi.batchStealer)
 
+# Screenshots
+<p align="center">
+<img src="https://i.imgur.com/8tmguuS.jpg">
+</p>
+
 # Important
 
 ⚠️ It is forbidden to use this batch file for non-educational purposes. Use only with permission on your own computers. While the batch file is not itself illegal, running it on other PCs you don't have the access and permission is.
@@ -96,14 +101,6 @@
 # Obfuscation
 * You can try [this](https://github.com/SkyEmie/batch-obfuscator)
   * Clean the file before obfuscating it, remove all the comments and the features you don't use. Make the file as small as possible.
-
-# Screenshots
-<p align="center">
-<img src="https://i.imgur.com/r6SjBVc.png">
-</p>
-<p align="center">
-<img src="https://i.imgur.com/0mmvg7p.jpg">
-</p>
 
 # Legal
 
