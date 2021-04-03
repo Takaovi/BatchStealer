@@ -97,6 +97,11 @@
 * You can try [this](https://github.com/SkyEmie/batch-obfuscator)
   * Clean the file before obfuscating it, remove all the comments and the features you don't use. Make the file as small as possible.
 
+# Screenshots
+<p align="center">
+<img src="https://i.imgur.com/r6SjBVc.png">
+</p>
+
 # Legal
 
 None of the authors, contributors, or anyone else connected with this open source project, in any way whatsoever, can be responsible for your use of the information or the application contained in or linked from this repository.
