@@ -7,11 +7,15 @@
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=takaovi.batchStealer)
 
 # Screenshots
-<p align="center">
-<img src="https://i.imgur.com/8tmguuS.jpg">
-</p>
 
+ <details>
+  <summary>Discord capture</summary>
+ 
+  <p align="center">
+  <img src="https://i.imgur.com/8tmguuS.jpg">
+  </p>
 *Example report, not a real user. Firefox has no files as it wasn't installed on the machine.*
+</details>
 
 # How to use
 
