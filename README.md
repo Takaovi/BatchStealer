@@ -14,7 +14,8 @@
   <p align="center">
   <img src="https://i.imgur.com/8tmguuS.jpg">
   </p>
-*Example report, not a real user. Firefox has no files as it wasn't installed on the machine.*
+  
+  *Example report, not a real user. Firefox has no files as it wasn't installed on the machine.*
 </details>
 
 # How to use
