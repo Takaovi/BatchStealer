@@ -1,6 +1,6 @@
 # BatchStealer | [BatchStealer Example](https://github.com/Takaovi/BatchStealer-Example)
 
-### A batch script for taking files or info and sending them to a webhook
+### A batch script for taking things and sending them to a webhook
 
 2.4.2021 < FUD [(Virustotal)](https://www.virustotal.com/gui/file/94055f3f53d270c1407c4eabbf6520f469c1b5a89506a46e9b4df6143f06b1d3/detection)
 
