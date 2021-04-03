@@ -35,7 +35,7 @@
 
 # Features
 
-### 📨 Steals
+### 💉 Steals
 
 *Almost everything is encrypted, I haven't had the patience to do that on a batch file*
 
