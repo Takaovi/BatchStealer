@@ -132,7 +132,8 @@
 
 ## Todo
 * DNS poisoning
-  * Simple edit of the hosts file (Would require administrator)  
+  * Simple edit of the hosts file (Would require administrator)
+* Screenshot 
 * Other interesting stuff...
 
 ## 💡 Support
