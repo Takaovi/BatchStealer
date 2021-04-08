@@ -130,6 +130,11 @@
     * Ability to target specific users (Check username)
 </details>
 
+## Todo
+* DNS poisoning
+ * Simple edit of the hosts file (Would require administrator)  
+* Other interesting stuff...
+
 ## 💡 Support
 
 * If you want to support the project do a pull request.
