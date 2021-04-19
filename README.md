@@ -126,6 +126,8 @@
     * Make sure to have a working batch file's source on the link, it will replace everything.
     * Ability to target specific users (Check username)
     
+  * Take screenshot
+    
 #### Included on the [Automatic Builder](https://github.com/Takaovi/BSBuilder)
   * Add garbage code (Confuse/Fill)
 
@@ -134,7 +136,6 @@
 ## Todo
 * DNS poisoning
   * Simple edit of the hosts file (Would require administrator)
-* Screenshot 
 * Other interesting stuff...
 
 ## 💡 Support
