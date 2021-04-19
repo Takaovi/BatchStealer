@@ -147,6 +147,10 @@
 * You can try [this](https://github.com/SkyEmie/batch-obfuscator)
   * RECURRING DOES NOT WORK WITH THIS. (Script exits when it reaches it)
   * "START AS ADMINISTRATOR" WILL GENERATE A VISIBLE ERROR MESSAGE ON THE CMD BOX.
+
+## Thanks
+
+[screenshot-cmd (github)](https://github.com/chuntaro/screenshot-cmd)
 # Legal
 
 None of the authors, contributors, or anyone else connected with this open source project, in any way whatsoever, can be responsible for your use of the information or the application contained in or linked from this repository.
