@@ -129,7 +129,7 @@
 #### Included on the [Automatic Builder](https://github.com/Takaovi/BSBuilder)
   * Add garbage code (Confuse/Fill)
 
-  * ~~Obfuscate~~ Not made yet, use [this](https://github.com/SkyEmie/batch-obfuscator) manually for now.
+  * ~~Obfuscate~~ Not made yet.
 
 ## Todo
 * DNS poisoning
@@ -142,10 +142,10 @@
 * If you want to support the project do a pull request.
   * The pull request could be a new steal etc.
 
-## ㊙️ Obfuscation
+## ㊙️ Obfuscation (Read carefully)
 * You can try [this](https://github.com/SkyEmie/batch-obfuscator)
-  * Clean the file before obfuscating it, remove all the comments and the features you don't use. Make the file as small as possible.
-
+  * RECURRING DOES NOT WORK WITH THIS. (Script exits when it reaches it)
+  * "START AS ADMINISTRATOR" WILL GENERATE A VISIBLE ERROR MESSAGE ON THE CMD BOX.
 # Legal
 
 None of the authors, contributors, or anyone else connected with this open source project, in any way whatsoever, can be responsible for your use of the information or the application contained in or linked from this repository.
