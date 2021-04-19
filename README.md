@@ -117,9 +117,6 @@
 
 ### 📑 Other features 
 
-<details>
-  <summary>Other</summary>
- 
   * Delete itself after execution
 
   * Add itself to Task Scheduler (CMD window will be invisible when executed)
@@ -128,7 +125,8 @@
   * Push updates to infected machine(s) **(Beta, expect bugs and crashes)**
     * Make sure to have a working batch file's source on the link, it will replace everything.
     * Ability to target specific users (Check username)
-</details>
+    
+  * Add garbage code (Confuse/Fill)
 
 ## Todo
 * DNS poisoning
