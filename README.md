@@ -126,6 +126,7 @@
     * Make sure to have a working batch file's source on the link, it will replace everything.
     * Ability to target specific users (Check username)
     
+#### Included on the [Automatic Builder](https://github.com/Takaovi/BSBuilder)
   * Add garbage code (Confuse/Fill)
 
   * ~~Obfuscate~~ Not made yet, use [this](https://github.com/SkyEmie/batch-obfuscator) manually for now.
