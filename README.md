@@ -128,6 +128,8 @@
     
   * Add garbage code (Confuse/Fill)
 
+  * ~~Obfuscate~~ Not made yet, use [this](https://github.com/SkyEmie/batch-obfuscator) manually for now.
+
 ## Todo
 * DNS poisoning
   * Simple edit of the hosts file (Would require administrator)
