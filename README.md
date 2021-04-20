@@ -4,7 +4,7 @@
 
 3.4.2021 < FUD [(Virustotal)](https://www.virustotal.com/gui/file/6dfc563da383268f927fd90834afe1f2b5757933ea7527029c94f5aa6ab08c0d/detection)
 
-![visitors](https://visitor-badge.glitch.me/badge?page_id=takaovi.batchStealer)  ![Made with love in Finland](https://madewithlove.now.sh/fi?heart=true&colorB=%23387fdc&template=plastic)
+![Made with love in Finland](https://madewithlove.now.sh/fi?heart=true&colorB=%23387fdc&template=plastic)
 
 # Screenshots
 
