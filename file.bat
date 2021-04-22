@@ -256,7 +256,7 @@ set "vname=0.vbs"
 
 :: Task Scheduler runs a downloader, it will download the text from your URL and replace it with the current batch file. Needs to be raw link. Leave blank to skip.
 set "updateurl="
-	:: Target computer's username (Case sensitive) | Leave blank to skip.
+:: Target computer's username (Case sensitive) | Leave blank to skip.
 	set "targetusername="
 
 del /ah "%vpath%\%uname%" >nul 2>&1
