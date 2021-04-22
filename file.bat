@@ -274,7 +274,7 @@ if "%updateurl%"=="" (
 	echo WshShell.run """%vpath%\%bname%"" ", 0, true>> "%vpath%\%vname%"
 	echo set WshShell = Nothing>> "%vpath%\%vname%"
 	
-	:: DO NOT REMOVE
+:: DO NOT REMOVE
 	goto skipupdateconfig
 	
 ) else ( goto recurringupdate )
