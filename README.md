@@ -120,7 +120,6 @@
 Fake error message
 ```batch
 set "vpath="
-
 ...
 
 if not "%~dp0"=="%vpath%\" (
