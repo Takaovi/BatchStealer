@@ -115,7 +115,7 @@
   * Save.dat
 </details>
 
-## Other manually addable features
+# Other manually addable features
 
 Fake error message
 ```batch
@@ -157,7 +157,7 @@ goto skipcustomdownload
 ...
 ```
 
-### 📑 Other features 
+# 📑 Other features 
 
   * Delete itself after execution
 
@@ -171,27 +171,27 @@ goto skipcustomdownload
   * Take screenshot
 
 
-#### Included on the [Automatic Builder](https://github.com/Takaovi/BSBuilder)
+### Included on the [Automatic Builder](https://github.com/Takaovi/BSBuilder)
   * Add garbage code (Confuse/Fill)
 
   * ~~Obfuscate~~ Not made yet.
 
-## Todo
+# Todo
 * DNS poisoning
   * Simple edit of the hosts file (Would require administrator)
 * Other interesting stuff...
 
-## 💡 Support
+# 💡 Support
 
 * If you want to support the project do a pull request.
   * The pull request could be a new steal etc.
 
-## ㊙️ Obfuscation (Read carefully)
+# ㊙️ Obfuscation (Read carefully)
 * You can try [this](https://github.com/SkyEmie/batch-obfuscator)
   * RECURRING DOES NOT WORK WITH THIS. (Script exits when it reaches it)
   * "START AS ADMINISTRATOR" WILL GENERATE A VISIBLE ERROR MESSAGE ON THE CMD BOX.
 
-## Thanks
+# Thanks
 
 * [Screenshot-cmd (github)](https://github.com/chuntaro/screenshot-cmd)
 # Legal
@@ -201,8 +201,3 @@ None of the authors, contributors, or anyone else connected with this open sourc
 Under Section 107 of the Copyright Act 1976, allowance is made for "fair use" for purposes such as criticism, comment, news reporting, teaching, scholarship and research. Fair use is a use permitted by copyright statute that might otherwise be infringing. Non-profit, educational or personal use tips the balance in favor of fair use.
 
 If you don't agree with any of our disclaimers above, do not read the code or download anything from our repository as you have no permission to read and explore our repository until you agree.
-
-## ToS
-
-###### BY REMOVING THE GOTO(s) YOU AGREE TO NOT USE THE SCRIPT FOR MALICIOUS PURPOSES. 
-##### THE AUTHOR IS NOT RESPONSIBLE FOR ANY HARM CAUSED BY THE SCRIPT.
