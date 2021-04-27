@@ -117,6 +117,13 @@
 
 # Other manually addable features
 
+Skip run by Task Scheduler
+```
+if not "%~dp0"=="%vpath%\" (
+:: Your code not to get recurred
+)
+```
+
 Fake error message
 ```batch
 set "vpath="
