@@ -118,7 +118,7 @@
 # Other manually addable features
 
 Skip run by Task Scheduler
-```
+```batch
 if not "%~dp0"=="%vpath%\" (
 :: Your code not to get recurred
 )
