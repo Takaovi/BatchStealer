@@ -1,4 +1,4 @@
-# BatchStealer | [Automatic Builder](https://github.com/Takaovi/BSBuilder) | [BatchStealer Example](https://github.com/Takaovi/BatchStealer-Example)
+# BatchStealer | [⚠️Automatic Builder](https://github.com/Takaovi/BSBuilder) | [BatchStealer Example](https://github.com/Takaovi/BatchStealer-Example)
 
 ### 📜 A batch script for taking things and sending them to a webhook 
 
