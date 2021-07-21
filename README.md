@@ -1,5 +1,8 @@
 # BatchStealer | [BatchStealer Example](https://github.com/Takaovi/BatchStealer-Example)
 
+* My attempt at making a stealer with fucking BATCH. It sucks lmfao.
+
+
 ## [Get The Automatic Builder](https://github.com/Takaovi/BSBuilder) ❤️
 
 ### 📜 A batch script for taking things and sending them to a webhook 
@@ -188,12 +191,13 @@ goto skipcustomdownload
 
 # ㊙️ Obfuscation (Read carefully)
 * You can try [this](https://github.com/SkyEmie/batch-obfuscator)
-  * RECURRING DOES NOT WORK WITH THIS. (Script exits when it reaches it)
-  * "START AS ADMINISTRATOR" WILL GENERATE A VISIBLE ERROR MESSAGE ON THE CMD BOX.
+  * Recurring does not work with the obfuscation. (Script exits when it reaches it)
+  * "Start as administrator" will make a visible error message on the CMD box.
 
 # Thanks
 
 * [Screenshot-cmd (github)](https://github.com/chuntaro/screenshot-cmd)
+
 # Legal
 
 None of the authors, contributors, or anyone else connected with this open source project, in any way whatsoever, can be responsible for your use of the information or the application contained in or linked from this repository.
