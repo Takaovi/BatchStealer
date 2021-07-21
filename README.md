@@ -8,18 +8,6 @@
 
 ![Made with love in Finland](https://madewithlove.now.sh/fi?heart=true&colorB=%23387fdc&template=plastic)
 
-# Screenshots
-
- <details>
-  <summary>Discord Capture Example</summary>
- 
-  <p align="center">
-  <img src="https://i.imgur.com/8tmguuS.jpg">
-  </p>
-  
-  *Example report, not a real user. Firefox has no files as it wasn't installed on the machine.*
-</details>
-
 # How to use
 
 ### ⚠️ Windows 10 build 17063, or later (*cURL* is included)
