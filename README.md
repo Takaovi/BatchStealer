@@ -86,7 +86,7 @@
  * osu!.cfg
 </details>
 <details>
-  <summary>Discord (Doesn't work currently!)</summary>
+  <summary>Discord</summary>
  
   * File containing a Token
   * Other various files
