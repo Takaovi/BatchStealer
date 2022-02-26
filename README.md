@@ -4,11 +4,7 @@
 
 ## [Get The Automatic Builder](https://github.com/Takaovi/BSBuilder) ❤️
 
-My attempt at making a stealer with batch, it sucks. The script will not be updated anymore. If something, a new one would be made, this time properly. Treat the current BatchStealer as POC, not a finished product/malware.
-
-
-
-
+My attempt at making a stealer with batch, it sucks. The script will not be updated anymore. If something, a new one would be made, this time properly. Treat the current BatchStealer as POC, not as a finished product/malware.
 
 3.4.2021 < FUD [(Virustotal)](https://www.virustotal.com/gui/file/6dfc563da383268f927fd90834afe1f2b5757933ea7527029c94f5aa6ab08c0d/detection)
 
